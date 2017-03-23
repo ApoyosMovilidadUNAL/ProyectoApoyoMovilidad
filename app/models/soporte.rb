@@ -1,0 +1,2 @@
+class Soporte < ApplicationRecord
+end
