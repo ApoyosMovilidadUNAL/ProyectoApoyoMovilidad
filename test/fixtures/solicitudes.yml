@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  SOLI_ESTADO: 1
+  documentos: one
+  recursos: one
+  estudiantes: one
+  profesores: one
+
+two:
+  SOLI_ESTADO: 1
+  documentos: two
+  recursos: two
+  estudiantes: two
+  profesores: two
