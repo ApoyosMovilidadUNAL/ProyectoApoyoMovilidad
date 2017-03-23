@@ -1,3 +1,4 @@
 class Profesore < ApplicationRecord
-    has_many :solicitudes
+    # Asociacion uno a muchos a la tabla solicitudes.
+    has_many : solicitudes
 end

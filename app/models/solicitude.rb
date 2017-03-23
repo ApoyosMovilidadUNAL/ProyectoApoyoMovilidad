@@ -1,4 +1,5 @@
 class Solicitude < ApplicationRecord
-  has_many :documentos
-  has_many :soporte
+  # Asociacion uno a muchos a la tabla documentos y la tabla soportes.
+  has_many : documentos
+  has_many : soportes
 end
