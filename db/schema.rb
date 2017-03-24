@@ -43,17 +43,12 @@ ActiveRecord::Schema.define(version: 20170323044349) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "recursos", force: :cascade do |t|
-    t.string   "RECU_NOMBRE"
-    t.string   "RECU_RUTA"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+  
 
   create_table "solicitudes", force: :cascade do |t|
     t.integer  "SOLI_ESTADO"
     t.integer  "documentos_id"
-    t.integer  "recursos_id"
+    t.integer  "soportes_id"
     t.integer  "estudiantes_id"
     t.integer  "profesores_id"
     t.datetime "created_at",     null: false
@@ -61,7 +56,7 @@ ActiveRecord::Schema.define(version: 20170323044349) do
     t.index ["documentos_id"], name: "index_solicitudes_on_documentos_id", using: :btree
     t.index ["estudiantes_id"], name: "index_solicitudes_on_estudiantes_id", using: :btree
     t.index ["profesores_id"], name: "index_solicitudes_on_profesores_id", using: :btree
-    t.index ["recursos_id"], name: "index_solicitudes_on_recursos_id", using: :btree
+    t.index ["soportes_id"], name: "index_solicitudes_on_soportes_id", using: :btree
   end
 
   create_table "soportes", force: :cascade do |t|
@@ -74,5 +69,5 @@ ActiveRecord::Schema.define(version: 20170323044349) do
   add_foreign_key "solicitudes", "documentos", column: "documentos_id"
   add_foreign_key "solicitudes", "estudiantes", column: "estudiantes_id"
   add_foreign_key "solicitudes", "profesores", column: "profesores_id"
-  add_foreign_key "solicitudes", "recursos", column: "recursos_id"
+  add_foreign_key "solicitudes", "soportes", column: "soportes_id"
 end
