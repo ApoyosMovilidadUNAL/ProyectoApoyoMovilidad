@@ -2,7 +2,6 @@ class CreateEstudiantes < ActiveRecord::Migration[5.0]
   def change
     create_table :estudiantes do |t|
       t.string :ESTU_NOMBRE
-      t.string :ESTU_PASS
       t.string :ESTU_EMAIL
       t.integer :ESTU_ROL
       t.integer :ESTU_CEDULA
