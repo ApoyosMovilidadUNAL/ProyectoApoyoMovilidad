@@ -16,28 +16,28 @@ ActiveRecord::Schema.define(version: 20170323044349) do
   enable_extension "plpgsql"
 
   create_table "documentos", force: :cascade do |t|
-    t.string   "DOCU_NOMBRE"
-    t.string   "DOCU_RUTA"
+    t.string   "DOCU_NOMBRE", null: false
+    t.string   "DOCU_RUTA",   null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "estudiantes", force: :cascade do |t|
-    t.string   "ESTU_NOMBRE"
-    t.string   "ESTU_PASS"
-    t.string   "ESTU_EMAIL"
+    t.string   "ESTU_NOMBRE",   null: false
+    t.string   "ESTU_PASS",     null: false
+    t.string   "ESTU_EMAIL",    null: false
     t.integer  "ESTU_ROL"
-    t.integer  "ESTU_CEDULA"
-    t.string   "ESTU_FACULTAD"
-    t.string   "ESTU_CARRERA"
+    t.integer  "ESTU_CEDULA",   null: false
+    t.string   "ESTU_FACULTAD", null: false
+    t.string   "ESTU_CARRERA",  null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   create_table "profesores", force: :cascade do |t|
-    t.string   "PROFE_NOMBRE"
-    t.string   "PROFE_PASS"
-    t.string   "PROFE_EMAIL"
+    t.string   "PROFE_NOMBRE", null: false
+    t.string   "PROFE_PASS",   null: false
+    t.string   "PROFE_EMAIL",  null: false
     t.integer  "PROFE_ROL"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20170323044349) do
   end
 
   create_table "soportes", force: :cascade do |t|
-    t.string   "SOPOR_NOMBRE"
-    t.string   "SOPOR_RUTA"
+    t.string   "SOPOR_NOMBRE", null: false
+    t.string   "SOPOR_RUTA",   null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
