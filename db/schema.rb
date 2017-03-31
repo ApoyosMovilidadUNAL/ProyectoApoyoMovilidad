@@ -43,10 +43,8 @@ ActiveRecord::Schema.define(version: 20170323044349) do
     t.datetime "updated_at",   null: false
   end
 
-  
-
   create_table "solicitudes", force: :cascade do |t|
-    t.integer  "SOLI_ESTADO",    null: false
+    t.integer  "SOLI_ESTADO"
     t.integer  "documentos_id"
     t.integer  "soportes_id"
     t.integer  "estudiantes_id"
