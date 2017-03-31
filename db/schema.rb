@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170323044349) do
   
 
   create_table "solicitudes", force: :cascade do |t|
-    t.integer  "SOLI_ESTADO"
+    t.integer  "SOLI_ESTADO", null: false
     t.integer  "documentos_id"
     t.integer  "soportes_id"
     t.integer  "estudiantes_id"
