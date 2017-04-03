@@ -1,0 +1,27 @@
+<%= form_for(support) do |f| %>
+  <% if support.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(support.errors.count, "error") %> prohibited this support from being saved:</h2>
+
+      <ul>
+      <% support.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :sup_name %>
+    <%= f.text_field :sup_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sup_ruta %>
+    <%= f.text_field :sup_ruta %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

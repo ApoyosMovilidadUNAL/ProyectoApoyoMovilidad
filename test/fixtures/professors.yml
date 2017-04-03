@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pro_name: MyString
+  pro_pass: MyString
+  pro_rol: 1
+  pro_email: MyString
+
+two:
+  pro_name: MyString
+  pro_pass: MyString
+  pro_rol: 1
+  pro_email: MyString
