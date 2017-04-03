@@ -1,5 +1,5 @@
 class Professor < ApplicationRecord
-    has_many: requests
+    has_many :requests
 
 #Validaciones
         #Validamos el formato del email.

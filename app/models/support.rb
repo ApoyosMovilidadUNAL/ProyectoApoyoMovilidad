@@ -1,3 +1,3 @@
 class Support < ApplicationRecord
-    has_one: requests
+    has_one :requests
 end

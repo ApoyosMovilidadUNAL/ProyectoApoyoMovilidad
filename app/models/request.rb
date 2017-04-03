@@ -1,8 +1,8 @@
 class Request < ApplicationRecord
-  belongs_to: student
-  belongs_to: professor
-  has_many: document
-  has_many: support
+  belongs_to :student
+  belongs_to :professor
+  has_many :document
+  has_many :support
 
 #Validaciones
         #Validamos que los campos se ingresen.

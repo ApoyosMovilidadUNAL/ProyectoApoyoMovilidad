@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-    has_many: requests
+    has_many :requests
 
     #Validaciones
         #Validamos el formato del email.
@@ -12,6 +12,4 @@ class Student < ApplicationRecord
     validates :stu_pass , confirmation:true
         #Validamos que los campos se ingresen.
     validates :stu_name, :stu_id, :stu_email, :stu_rol, :stu_carrera, :stu_facultad, :presence => {:message => "Campo esta en blanco." }
-end
-
 end
