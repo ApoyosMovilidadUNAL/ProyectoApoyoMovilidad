@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sup name:</strong>
+  <%= @support.sup_name %>
+</p>
+
+<p>
+  <strong>Sup ruta:</strong>
+  <%= @support.sup_ruta %>
+</p>
+
+<%= link_to 'Edit', edit_support_path(@support) %> |
+<%= link_to 'Back', supports_path %>
