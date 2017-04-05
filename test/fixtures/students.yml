@@ -5,7 +5,11 @@ one:
   stu_pass: MyString
   stu_email: MyString
   stu_rol: 1
+<<<<<<< HEAD
   stu_id: 1
+=======
+  stu_identification: 1
+>>>>>>> Prueba-back
   stu_facultad: MyString
   stu_carrera: MyString
 
@@ -14,6 +18,10 @@ two:
   stu_pass: MyString
   stu_email: MyString
   stu_rol: 1
+<<<<<<< HEAD
   stu_id: 1
+=======
+  stu_identification: 1
+>>>>>>> Prueba-back
   stu_facultad: MyString
   stu_carrera: MyString

@@ -3,11 +3,21 @@
 one:
   pro_name: MyString
   pro_pass: MyString
+<<<<<<< HEAD
   pro_rol: 1
   pro_email: MyString
+=======
+  pro_email: MyString
+  pro_rol: 1
+>>>>>>> Prueba-back
 
 two:
   pro_name: MyString
   pro_pass: MyString
+<<<<<<< HEAD
   pro_rol: 1
   pro_email: MyString
+=======
+  pro_email: MyString
+  pro_rol: 1
+>>>>>>> Prueba-back

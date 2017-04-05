@@ -1,7 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   req_estado: 
+=======
+  req_estado: 1
+>>>>>>> Prueba-back
   req_descripcion: MyText
   student: one
   professor: one
@@ -9,7 +13,11 @@ one:
   support: one
 
 two:
+<<<<<<< HEAD
   req_estado: 
+=======
+  req_estado: 1
+>>>>>>> Prueba-back
   req_descripcion: MyText
   student: two
   professor: two
