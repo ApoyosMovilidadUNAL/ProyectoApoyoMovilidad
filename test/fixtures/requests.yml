@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  req_estado: 
+  req_estado: 1
   req_descripcion: MyText
   student: one
   professor: one
@@ -9,7 +9,7 @@ one:
   support: one
 
 two:
-  req_estado: 
+  req_estado: 1
   req_descripcion: MyText
   student: two
   professor: two

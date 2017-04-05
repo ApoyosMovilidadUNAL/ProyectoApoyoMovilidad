@@ -3,11 +3,11 @@
 one:
   pro_name: MyString
   pro_pass: MyString
-  pro_rol: 1
   pro_email: MyString
+  pro_rol: 1
 
 two:
   pro_name: MyString
   pro_pass: MyString
-  pro_rol: 1
   pro_email: MyString
+  pro_rol: 1

@@ -1,3 +1,3 @@
 class Document < ApplicationRecord
-    has_one :requests
+	has_one :requests
 end

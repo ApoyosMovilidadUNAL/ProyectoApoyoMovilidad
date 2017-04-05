@@ -26,7 +26,7 @@ for x in(1..110)
   stu_pass:"passs#{x}",
   stu_email:"estudiante#{x}@unal.edu.co",
   stu_rol:2,
-  stu_id: x,
+  stu_identification: x,
   stu_facultad: 'ingenieria',
   stu_carrera:'ingenieria de sistemas')
 end
@@ -53,10 +53,11 @@ end
 for x in(1..101)
   Request.create(
   req_estado:1,
-  students_id:x,
-  professors_id:x,
-  documents_id:x,
-  supports_id:x
+  req_descripcion:x,
+  student_id:x,
+  professor_id:x,
+  document_id:x,
+  support_id:x
   )
 end
 
