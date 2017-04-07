@@ -12,4 +12,26 @@ class Student < ApplicationRecord
     validates :stu_pass, confirmation:true
         #Validamos que los campos se ingresen.
     validates :stu_name, :stu_identification, :stu_email, :stu_rol, :stu_carrera, :stu_facultad, :presence => {:message => "Campo esta en blanco." }
+
+
+    def self.student_by_porfessor(name)
+        find_by_sql("select students.*
+                     from students,professors,requests 
+                     WHERE students.id=requests.student_id 
+                     AND professors.id=requests.professor_id 
+                     AND professors.pro_name=\'#{name}\'")
+    end
+
+    def self.student_all()
+        all;
+    end
+
+    def self.student_by_document(name)
+        find_by_sql("select students.*
+                     from students,requests,documents
+                     WHERE students.id=requests.student_id 
+                     AND documents.id=requests.document_id
+                     AND documents.docu_name=\'#{name}\'")
+    end
+
 end
