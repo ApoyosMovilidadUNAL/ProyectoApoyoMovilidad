@@ -13,7 +13,7 @@ class Student < ApplicationRecord
         #Validamos que los campos se ingresen.
     validates :stu_name, :stu_identification, :stu_email, :stu_rol, :stu_carrera, :stu_facultad, :presence => {:message => "Campo esta en blanco." }
 
-
+    #Consulta de estudiantes relacionados a un profesor
     def self.student_by_porfessor(name)
         find_by_sql("select students.*
                      from students,professors,requests 
@@ -22,10 +22,13 @@ class Student < ApplicationRecord
                      AND professors.pro_name=\'#{name}\'")
     end
 
+    #Consulta de todos los estudiantes
     def self.student_all()
-        all;
+        all
+        #.paginate(page: params[:page],per_page: 5);
     end
 
+    #Consulta de estudiante realcionado a un documento
     def self.student_by_document(name)
         find_by_sql("select students.*
                      from students,requests,documents

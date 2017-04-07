@@ -1,6 +1,7 @@
 class Document < ApplicationRecord
 	has_one :requests
 
+	#Consulta de documento relacionado a un estudiante
 	def self.documents_by_student(nit)
 		find_by_sql("select documents.*
                      from students,requests,documents
@@ -9,6 +10,7 @@ class Document < ApplicationRecord
                      AND students.stu_identification=#{nit}")
 	end
 
+	#Consulta de documentos relaiconados a una solicitud
 	def self.document_by_request(id)
 		find_by_sql("select documents.*
 					 from requests,documents
