@@ -10,8 +10,8 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-    @post = Student.find(params[:id])
-    render json: @post
+    #@post = Student.find(params[:id])
+    #render json: @post
   end
 
   # GET /students/new

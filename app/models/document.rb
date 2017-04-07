@@ -1,5 +1,6 @@
 class Document < ApplicationRecord
 	has_one :requests
+	mount_uploader :docu_ruta, DocumentUploader
 
 	#Consulta de documento relacionado a un estudiante
 	def self.documents_by_student(nit)

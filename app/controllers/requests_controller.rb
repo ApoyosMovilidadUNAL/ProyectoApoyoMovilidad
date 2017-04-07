@@ -10,8 +10,8 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
-    @post = Request.find(params[:id])
-    render json: @post
+    #@post = Request.find(params[:id])
+    #render json: @post
   end
 
   # GET /requests/new
