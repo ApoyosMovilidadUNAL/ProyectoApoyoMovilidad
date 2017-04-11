@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20170407093130) do
 
   create_table "professors", force: :cascade do |t|
     t.string   "pro_name",   null: false
-    t.string   "pro_pass"
     t.string   "pro_email",  null: false
     t.integer  "pro_rol",    null: false
     t.datetime "created_at", null: false
@@ -48,7 +47,6 @@ ActiveRecord::Schema.define(version: 20170407093130) do
 
   create_table "students", force: :cascade do |t|
     t.string   "stu_name",           null: false
-    t.string   "stu_pass"
     t.string   "stu_email",          null: false
     t.integer  "stu_rol",            null: false
     t.integer  "stu_identification", null: false
