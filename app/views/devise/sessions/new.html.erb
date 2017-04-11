@@ -5,11 +5,7 @@
     <div class="container-fluid" style="padding: 2%">
 		  <div class="row">
 		    <div class="col-md-3" style="padding: 1%; background-color: #aaa">
-					<div>Nombre: <%= @user_info.stu_name %></div>
-					<div>N. de id.: <%= @user_info.stu_identification %></div>
-					<div>Facultad: <%= @user_info.stu_facultad %></div>
-					<div>Carrera: <%= @user_info.stu_carrera %><br></div>
-					<%= render 'devise/shared/links'%>
+					<%= render 'devise/sessions/new'%>
 					<% if notice %>
 					  <p class="alert alert-success"><%= notice %></p>
 					<% end %>
