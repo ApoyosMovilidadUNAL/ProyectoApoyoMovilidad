@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Estudiante</h2>
+
+<p>
+  <strong>Stu name:</strong>
+  <%= @student.stu_name %>
+</p>
+
+<p>
+  <strong>Stu email:</strong>
+  <%= @student.stu_email %>
+</p>
+
+<p>
+  <strong>Stu rol:</strong>
+  <%= @student.stu_rol %>
+</p>
+
+<p>
+  <strong>Stu identification:</strong>
+  <%= @student.stu_identification %>
+</p>
+
+<p>
+  <strong>Stu facultad:</strong>
+  <%= @student.stu_facultad %>
+</p>
+
+<p>
+  <strong>Stu carrera:</strong>
+  <%= @student.stu_carrera %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

@@ -5,10 +5,10 @@
     <div class="container-fluid" style="padding: 2%">
 		  <div class="row">
 		    <div class="col-md-3" style="padding: 1%; background-color: #aaa">
-					<div>Nombre: <%= @user_info.stu_name %></div>
-					<div>N. de id.: <%= @user_info.stu_identification %></div>
-					<div>Facultad: <%= @user_info.stu_facultad %></div>
-					<div>Carrera: <%= @user_info.stu_carrera %><br></div>
+					<div>Nombre: <%= @student.stu_name %></div>
+					<div>N. de id.: <%= @student.stu_identification %></div>
+					<div>Facultad: <%= @student.stu_facultad %></div>
+					<div>Carrera: <%= @student.stu_carrera %><br></div>
 					<%= render 'devise/shared/links'%>
 					<% if notice %>
 					  <p class="alert alert-success"><%= notice %></p>
@@ -18,6 +18,12 @@
 					<% end %>
 		    </div>
   			<div class="col-md-9">
+  				<% if (@student.stu_rol == 1) %>
+  				<%= render "students/show-admin"%>
+  				<% end %>
+  				<% if (@student.stu_rol == 2) %>
+  				<%= render "students/show-student"%>
+  				<% end %>
   				<ul class="bxslider">
 					  <li>
 					  	<%= image_tag("conv-movilidad-2016-2018-un-boletin.png", class:'hidden-print') %>
