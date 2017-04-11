@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-  	@user = Student.all.where(stu_email: current_user)
+  	@user_info = Student.find_by(stu_email: current_user.email)
   end
 end
