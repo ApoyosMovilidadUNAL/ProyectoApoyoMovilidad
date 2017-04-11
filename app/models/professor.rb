@@ -10,4 +10,12 @@ class Professor < ApplicationRecord
         #Validamos que los campos se ingresen.
     validates :pro_name, :pro_email, :pro_rol, :presence => {:message => "Campo esta en blanco." }
 
+    #Consulta de profesores relacionados a un estudiante
+    def self.professor_by_student(name)
+        find_by_sql("select professors.*
+                     from professors,students,requests
+                     WHERE students.id=requests.student_id 
+                     AND professors.id=requests.professor_id 
+                     AND students.stu_name=\'#{name}\'")
+    end
 end

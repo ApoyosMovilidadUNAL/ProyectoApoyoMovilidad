@@ -4,12 +4,14 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = Student.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
+    #@post = Student.find(params[:id])
+    #render json: @post
   end
 
   # GET /students/new

@@ -4,12 +4,14 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all
+    @requests = Request.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /requests/1
   # GET /requests/1.json
   def show
+    #@post = Request.find(params[:id])
+    #render json: @post
   end
 
   # GET /requests/new
