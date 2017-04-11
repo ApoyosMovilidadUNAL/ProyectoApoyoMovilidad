@@ -8,8 +8,6 @@ class Student < ApplicationRecord
         #Validamos que la cedula solo sea numerica y unico.
     validates :stu_identification, numericality: { only_integer:true }
     validates :stu_identification, uniqueness:true
-        #Validamos que se confirme el password
-    validates :stu_pass, confirmation:true
         #Validamos que los campos se ingresen.
     validates :stu_name, :stu_identification, :stu_email, :stu_rol, :stu_carrera, :stu_facultad, :presence => {:message => "Campo esta en blanco." }
 

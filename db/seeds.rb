@@ -12,7 +12,6 @@
 for x in(1..110)
   Professor.create!(
   pro_name:"profesor#{x}",
-  pro_pass:"passp#{x}",
   pro_email:"profe#{x}@unal.edu.co",
   pro_rol:1)
 end
@@ -20,10 +19,17 @@ end
 
 =begin ESTUDIANTES
 =end
-for x in(1..110)
+Student.create!(
+  stu_name:"estudiante1",
+  stu_email:"estudiante1@unal.edu.co",
+  stu_rol:1,
+  stu_identification: 1,
+  stu_facultad: 'ingenieria',
+  stu_carrera:'ingenieria de sistemas')
+
+for x in(2..110)
   Student.create!(
   stu_name:"estudiante#{x}",
-  stu_pass:"passs#{x}",
   stu_email:"estudiante#{x}@unal.edu.co",
   stu_rol:2,
   stu_identification: x,
