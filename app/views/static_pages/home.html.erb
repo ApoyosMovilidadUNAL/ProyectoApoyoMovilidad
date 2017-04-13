@@ -19,11 +19,10 @@
 		    </div>
   			<div class="col-md-9">
   				<% if (@student.stu_rol == 1) %>
-  				<%= render "students/show-admin"%>
-  				<% end %>
-  				<% if (@student.stu_rol == 2) %>
-  				<%= render "students/show-student"%>
-  				<% end %>
+  				<%= render "students/main-admin"%>
+  				<% elsif (@student.stu_rol == 2) %>
+  				<%= render "students/main-student"%>
+  				<% else %>
   				<ul class="bxslider">
 					  <li>
 					  	<%= image_tag("conv-movilidad-2016-2018-un-boletin.png", class:'hidden-print') %>
@@ -32,6 +31,7 @@
 							<%= image_tag("movilidadesUNAL.png", height: '150%', width:'150%', class:'hidden-print') %>
 					  </li>
 					</ul>
+					<% end %>
   			</div>
 		  </div>
 		</div>

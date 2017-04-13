@@ -4,6 +4,7 @@ class Request < ApplicationRecord
   	has_many :document
   	has_many :support
 
+  	default_scope {order("requests.created_at ASC")}
 	#Validaciones
         #Validamos que los campos se ingresen.
     validates :req_estado, :presence => {:message => "Campo esta en blanco." }

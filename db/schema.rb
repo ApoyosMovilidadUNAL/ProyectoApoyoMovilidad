@@ -37,14 +37,10 @@ ActiveRecord::Schema.define(version: 20170407093130) do
     t.text     "req_descripcion", null: false
     t.integer  "student_id"
     t.integer  "professor_id"
-    #t.integer  "document_id"
-    #t.integer  "support_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    #t.index ["document_id"], name: "index_requests_on_document_id", using: :btree
     t.index ["professor_id"], name: "index_requests_on_professor_id", using: :btree
     t.index ["student_id"], name: "index_requests_on_student_id", using: :btree
-    #t.index ["support_id"], name: "index_requests_on_support_id", using: :btree
   end
 
   create_table "students", force: :cascade do |t|
