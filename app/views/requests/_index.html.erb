@@ -20,10 +20,10 @@
       <tr>
         <td><%= request.req_estado %></td>
         <td><%= request.req_descripcion %></td>
-        <td><%= request.student %></td>
-        <td><%= request.professor %></td>
-        <td><%= request.document %></td>
-        <td><%= request.support %></td>
+        <td><%= request.student_id %></td>
+        <td><%= request.professor_id %></td>
+        <td><%= request.document_id %></td>
+        <td><%= request.support_id %></td>
         <td><%= link_to 'Show', request %></td>
         <td><%= link_to 'Edit', edit_request_path(request) %></td>
         <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
