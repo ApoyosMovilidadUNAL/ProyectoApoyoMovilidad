@@ -44,9 +44,9 @@ for x in(1..110)
   req_estado:1,
   req_descripcion:x,
   student_id:x,
-  professor_id:x,
+  professor_id:x
   #document_id:x,
-  support_id:x
+  #support_id:x
   )
 end
 
