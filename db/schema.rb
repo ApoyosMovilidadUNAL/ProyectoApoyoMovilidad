@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170407093130) do
     t.integer  "student_id"
     t.integer  "professor_id"
     #t.integer  "document_id"
-    t.integer  "support_id"
+    #t.integer  "support_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     #t.index ["document_id"], name: "index_requests_on_document_id", using: :btree
