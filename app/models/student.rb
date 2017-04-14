@@ -11,28 +11,29 @@ class Student < ApplicationRecord
         #Validamos que los campos se ingresen.
     validates :stu_name, :stu_identification, :stu_email, :stu_rol, :stu_carrera, :stu_facultad, :presence => {:message => "Campo esta en blanco." }
 
-    #Consulta de estudiantes relacionados a un profesor
-    def self.student_by_porfessor(name)
-        find_by_sql("select students.*
-                     from students,professors,requests 
-                     WHERE students.id=requests.student_id 
-                     AND professors.id=requests.professor_id 
-                     AND professors.pro_name=\'#{name}\'")
+    #Consulta de estudiante por identificador
+    def self.student_by_identification(identificador)
+        where(stu_identification: identificador).paginate(:page => 1, :per_page => 10)
     end
 
-    #Consulta de todos los estudiantes
-    def self.student_all()
-        all
-        #.paginate(page: params[:page],per_page: 5);
+    #Consulta solicitudes asociadas a un estudiante por identificacion
+    def self.request_by_student_identification(identificador)
+        Request.request_by_student(where(stu_identification: identificador)[0].id)
     end
 
-    #Consulta de estudiante realcionado a un documento
-    def self.student_by_document(name)
-        find_by_sql("select students.*
-                     from students,requests,documents
-                     WHERE students.id=requests.student_id 
-                     AND documents.id=requests.document_id
-                     AND documents.docu_name=\'#{name}\'")
+    #Consulta solicitudes asociadas a un estudiante por nombre
+    def self.request_by_student_name(nombre)
+        Request.request_by_student(where(stu_name: nombre)[0].id).paginate(:page => 1, :per_page => 10)
+    end
+
+    #Consulta solicitudes asociadas a un estudiante por correo
+    def self.request_by_student_email(email)
+        Request.request_by_student(where(stu_email: email)[0].id).paginate(:page => 1, :per_page => 10)
+    end
+
+    #consulta informacion del estudiante
+    def self.prueba(identificador)
+        find_by_id(Request.request_by_student(where(stu_identification: identificador))).paginate(:page => 1, :per_page => 10)
     end
 
 end
