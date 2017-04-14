@@ -9,8 +9,21 @@ class Request < ApplicationRecord
         #Validamos que los campos se ingresen.
     validates :req_estado, :presence => {:message => "Campo esta en blanco." }
 	
-	#Consulta de solicitudes por el nombre del estudiante
+	def self.request_by_estado(estado)
+        where(req_estado: estado).paginate(:page => 1, :per_page => 10)
+    end
+
+	#Consulta de solicitudes asociadas a un estudiante
 	def self.request_by_student(id)
-		where(student_id: id)
+		where(student_id: id).paginate(:page => 1, :per_page => 10)
 	end
+
+	#Consulta de solicitudes asociadas a un profesor
+	def self.request_by_professor(id)
+        where(professor_id: id).paginate(:page => 1, :per_page => 10)
+    end
+
+    
+
+
 end
