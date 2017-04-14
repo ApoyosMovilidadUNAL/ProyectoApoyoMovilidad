@@ -10,6 +10,7 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
+    @student = Student.find_by(stu_email: current_user.email)
     #@post = Request.find(params[:id])
     #render json: @post
   end

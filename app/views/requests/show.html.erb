@@ -1,34 +1,47 @@
-<p id="notice"><%= notice %></p>
+<main class="detalle" >
+  <div class="breadcrumb-class">
+      Está en:<a href="#" target="_self" title="Inicio"></a>
+    </div>
 
-<p>
-  <strong>Req estado:</strong>
-  <%= @request.req_estado %>
-</p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+        <strong>Estado:</strong>
+          <%= @request.req_estado %>
+        </p>      
+      </div>
+      <div class="col-md-3">
+        <p>
+          <strong>Profesor:</strong>
+          <%= @request.professor.pro_name %>
+        </p>    
+      </div>
+      <div class="col-md-3">  
+        <p>
+          <strong>Estudiante:</strong>
+          <%= @request.student.stu_name %>
+        </p>
+      </div>
+    </div>
+  </div>
+       <p>
+          <strong>Req descripcion:</strong>
+          <%= @request.req_descripcion %>
+        </p>
+  
 
-<p>
-  <strong>Req descripcion:</strong>
-  <%= @request.req_descripcion %>
-</p>
+  <%= render 'documents/index' %>
 
-<p>
-  <strong>Student:</strong>
-  <%= @request.student %>
-</p>
+  <% if @request.req_estado == 4 %>
+    <p>
+      <strong>Support:</strong>
+      <%= @request.support %>
+    </p>
+  <% end %>
 
-<p>
-  <strong>Professor:</strong>
-  <%= @request.professor %>
-</p>
+  <br>
 
-<p>
-  <strong>Document:</strong>
-  <%= @request.document %>
-</p>
-
-<p>
-  <strong>Support:</strong>
-  <%= @request.support %>
-</p>
-
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+  <%= link_to 'Edit', edit_request_path(@request) %>
+  
+</main>
