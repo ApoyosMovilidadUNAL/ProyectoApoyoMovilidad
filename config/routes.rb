@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       root 'static_pages#home', as: :authenticated_root
       get '/user-requests', to: 'static_pages#requests'
       get '/requests-history', to: 'static_pages#history'
+      get '/professors-by-name', to: 'static_pages#professors_by_name'
     end
 
     unauthenticated do

@@ -17,6 +17,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
+    @student = Student.find_by(stu_email: current_user.email)
     @request = Request.new
   end
 
@@ -27,6 +28,7 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
+    @student = Student.find_by(stu_email: current_user.email)
     @request = Request.new(request_params)
 
     respond_to do |format|
@@ -72,6 +74,10 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      params.require(:request).permit(:req_estado, :req_descripcion, :student_id, :professor_id, :document_id, :support_id)
+      if params[:request]
+        params.require(:request).permit(:req_estado, :req_descripcion, :student_id, :professor_id)
+      else
+        params.permit(:req_estado, :req_descripcion, :student_id, :professor_id)
+      end
     end
 end

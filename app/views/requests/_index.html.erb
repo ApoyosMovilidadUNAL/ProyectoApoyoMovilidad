@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 <div class="container-fluid">
+  
   <div class="row">
-    
       <% if current_page?(:controller => 'static_pages', :action => 'requests') %>
         <div class="col-md-8">
          <h1>Solicitudes</h1>
         </div> 
         <div class="col-md-4">
-          <%= button_to 'Nueva solicitud', new_request_path, method: :get, class: "btn btn-success"%>
+          <% if @student.stu_rol == 2 %>
+            <%= button_to 'Nueva solicitud', new_request_path, method: :get, class: "btn btn-success"%>
+          <% end %>
         </div>
       <% elsif current_page?(:controller => 'static_pages', :action => 'history') %>
         <h1>Historial</h1>

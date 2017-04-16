@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  docu_name: MyString
-  docu_ruta: MyString
+  docu_name: Document_1
+  docu_ruta: /app/updates/1
+  request_id: 1
 
 two:
-  docu_name: MyString
-  docu_ruta: MyString
+  docu_name: Document_1
+  docu_ruta: /app/updates/2
+  request_id: 1
