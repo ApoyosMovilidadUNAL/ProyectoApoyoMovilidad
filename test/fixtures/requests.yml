@@ -5,13 +5,9 @@ one:
   req_descripcion: MyText
   student: one
   professor: one
-  document: one
-  support: one
 
 two:
   req_estado: 1
   req_descripcion: MyText
   student: two
   professor: two
-  document: two
-  support: two

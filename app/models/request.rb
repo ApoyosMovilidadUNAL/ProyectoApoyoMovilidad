@@ -4,17 +4,26 @@ class Request < ApplicationRecord
   	has_many :document
   	has_many :support
 
+  	default_scope {order("requests.created_at ASC")}
 	#Validaciones
         #Validamos que los campos se ingresen.
     validates :req_estado, :presence => {:message => "Campo esta en blanco." }
 	
-	#Consulta de solicitudes por el nombre del estudiante
-	def self.request_by_student(name)
-		find_by_sql("select req_descripcion,req_estado
-					from students,requests
-					WHERE students.id=requests.student_id 
-					AND students.stu_name=\'#{name}\'")
-	
+	def self.request_by_estado(estado)
+        where(req_estado: estado).paginate(:page => 1, :per_page => 10)
+    end
+
+	#Consulta de solicitudes asociadas a un estudiante
+	def self.request_by_student(id)
+		where(student_id: id).paginate(:page => 1, :per_page => 10)
 	end
+
+	#Consulta de solicitudes asociadas a un profesor
+	def self.request_by_professor(id)
+        where(professor_id: id).paginate(:page => 1, :per_page => 10)
+    end
+
+    
+
 
 end

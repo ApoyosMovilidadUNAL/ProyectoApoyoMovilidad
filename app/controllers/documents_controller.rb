@@ -4,12 +4,14 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
+    @student = Student.find_by(stu_email: current_user.email)
     @documents = Document.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /documents/1
   # GET /documents/1.json
   def show
+    @student = Student.find_by(stu_email: current_user.email)
     #@post = Document.find(params[:id])
     #render json: @post
   end
@@ -71,6 +73,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:docu_name, :docu_ruta)
+      params.require(:document).permit(:docu_name, :docu_ruta, :request_id)
     end
 end
