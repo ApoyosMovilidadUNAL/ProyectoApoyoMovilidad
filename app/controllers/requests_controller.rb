@@ -1,10 +1,10 @@
 class RequestsController < ApplicationController
+  before_action :set_user_info
   before_action :set_request, only: [:show, :edit, :update, :destroy]
 
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /requests/1
@@ -70,6 +70,16 @@ class RequestsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_request
       @request = Request.find(params[:id])
+    end
+
+    def set_user_info
+      @student = Student.find_by(stu_email: current_user.email)
+      if @student.stu_rol == 1
+        @requests = Request.all.paginate(:page => params[:page], :per_page => 20)  
+      else
+        @requests = Request.all.where(student_id: @student.id).paginate(:page => params[:page], :per_page => 20)
+      end
+      
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

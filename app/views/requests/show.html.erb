@@ -54,36 +54,4 @@
   </div>
 
   <br>
-
-  <% if @student.stu_rol == 1 %>
-
-    <% if @request.req_estado == 1 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 2 -%>
-        <%= submit_tag 'Revisar', class: 'btn btn-success' -%>
-      <%- end -%>
-
-    <% elsif @request.req_estado == 2 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 4 -%>
-        <%= submit_tag 'Aprobar', class: 'btn btn-success' -%>
-      <%- end -%>
-
-    <% elsif @request.req_estado == 3 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 4 -%>
-        <%= submit_tag 'Aprobar', class: 'btn btn-success' -%>
-      <%- end -%>
-
-    <% elsif @request.req_estado == 4 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 5 -%>
-        <%= submit_tag 'Terminar', class: 'btn btn-success' -%>
-      <%- end -%>
-    <% end %>
-
-  <% end %>
-  <!--
-  <%= link_to 'Edit', edit_request_path(@request) %>
-  -->
 </main>
