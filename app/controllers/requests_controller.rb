@@ -66,6 +66,11 @@ class RequestsController < ApplicationController
     end
   end
 
+  def history
+    @requests = Request.all.where(req_estado: 5)
+      .paginate(:page => params[:page], :per_page => 15)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_request

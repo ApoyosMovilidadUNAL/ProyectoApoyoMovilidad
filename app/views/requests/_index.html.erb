@@ -47,8 +47,12 @@
           <td><%= request.student.stu_name %></td>
           <td><%= request.professor.pro_name %></td>
           <td><%= request.req_descripcion %></td>
-
-          <td><%= link_to 'Detalles', request %></td>
+          <%case @student.stu_rol
+            when 1%>
+            <td><%= link_to 'Detalles', admin_request_path(request) %></td>
+            <% when 2 %>
+            <td><%= link_to 'Detalles', student_request_path(request) %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

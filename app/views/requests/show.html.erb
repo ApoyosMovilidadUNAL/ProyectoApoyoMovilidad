@@ -43,12 +43,11 @@
       </div>
       <div class="col-md-8">
         <%= render 'documents/index', {locales: @student} %>
-        <% if @request.req_estado == 4 %>
-          <p>
-            <strong>Support:</strong>
-            <%= @request.support %>
-          </p>
-        <% end %>
+        <%case @request.req_estado
+        when 4%>
+          <%= render 'supports/index', {locales: @student} %>
+        <%end%>
+        
       </div>
     </div>
   </div>

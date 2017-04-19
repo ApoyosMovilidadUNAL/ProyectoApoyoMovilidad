@@ -6,12 +6,15 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'static_pages#home', as: :authenticated_root
       scope :admin, as: :admin do
+        get '/requests-history', to: 'requests#history'
         resources :requests
         resources :students
+        resources :supports
       end
       scope :student, as: :student do
         resources :requests, only: [:index, :new, :create, :show, :update]
         resources :students
+        resources :supports
       end
 
       resources :documents
