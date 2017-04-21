@@ -23,7 +23,15 @@ class Student < ApplicationRecord
 
     #Consulta solicitudes asociadas a un estudiante por nombre
     def self.request_by_student_name(nombre)
-        Request.request_by_student(where(stu_name: nombre)[0].id).paginate(:page => 1, :per_page => 10)
+        #Client.where(orders_count: [1,3,5])
+        arr = []
+
+        where("stu_name LIKE ?","%#{nombre}%").find_each do |stud|
+            arr.push(stud.id)
+            puts "=================="
+            puts stud.id
+        end
+        Request.request_by_student(arr).paginate(:page => 1, :per_page => 10)
     end
 
     #Consulta solicitudes asociadas a un estudiante por correo

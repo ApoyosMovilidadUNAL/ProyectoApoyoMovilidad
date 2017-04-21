@@ -16,7 +16,11 @@ class Professor < ApplicationRecord
 
     #Consulta solicitudes asociadas a un profesor por nombre
     def self.request_by_professor_name(nombre)
-        Request.request_by_professor(where(pro_name: nombre)[0].id).paginate(:page => 1, :per_page => 10)
+        arr = []
+        where("pro_name LIKE ?","%#{nombre}%").find_each do |prof|
+            arr.push(prof.id)
+        end
+        Request.request_by_professor(arr).paginate(:page => 1, :per_page => 10)
     end
 
     #Consulta solicitudes asociadas a un profesor por correo

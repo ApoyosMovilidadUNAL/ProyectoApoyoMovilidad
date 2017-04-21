@@ -5,6 +5,21 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
+
+    if params[:search]!="" && params[:search] != nil
+      @requests = Professor.request_by_professor_name(params[:search])
+      .paginate(:page => params[:page], :per_page => 15)
+    elsif params[:search2]!="" && params[:search2] != nil
+      @requests = Student.request_by_student_name(params[:search2])
+      .paginate(:page => params[:page], :per_page => 15)
+    elsif params[:search3]!="" && params[:search3] != nil
+      @requests = Request.request_by_estado(Integer(params[:search3]))
+      .paginate(:page => params[:page], :per_page => 15)
+    else
+      @requests = Request.all
+      .paginate(:page => params[:page], :per_page => 15)
+    end
+
   end
 
   # GET /requests/1
