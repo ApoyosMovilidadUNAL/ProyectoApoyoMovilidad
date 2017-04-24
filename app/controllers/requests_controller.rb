@@ -6,7 +6,10 @@ class RequestsController < ApplicationController
   # GET /requests.json
   def index
     if @student.stu_rol == 1
-      if params[:search]!="" && params[:search] != nil
+      if params[:search]!="" && params[:search] != nil && params[:search2]!="" && params[:search2] != nil
+        @requests = Student.request_by_student_and_professor(params[:search2],params[:search])
+        .paginate(:page => params[:page], :per_page => 15)
+      elsif params[:search]!="" && params[:search] != nil
         @requests = Professor.request_by_professor_name(params[:search])
         .paginate(:page => params[:page], :per_page => 15)
       elsif params[:search2]!="" && params[:search2] != nil

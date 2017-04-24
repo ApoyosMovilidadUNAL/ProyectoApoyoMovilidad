@@ -46,6 +46,8 @@
         <%case @request.req_estado
         when 4%>
           <%= render 'supports/index', {locales: @student} %>
+        <% when 5%>
+          <%= render 'supports/index', {locales: @student} %>
         <%end%>
         
       </div>

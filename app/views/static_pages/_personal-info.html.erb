@@ -1,16 +1,17 @@
 
+<div class="container-fluid" style="padding: 1%; font-size: 20px" > 
+	<div><strong> Nombre: </strong><br> <%= @student.stu_name %></div>
+	<div><strong> N. de id.:</strong><br> <%= @student.stu_identification %></div>
+	<div><strong> Facultad:</strong><br> <%= @student.stu_facultad %></div>
+	<div><strong> Carrera:</strong><br> <%= @student.stu_carrera %><br></div>
+	<%= render 'devise/shared/links'%>
 
-<div>Nombre: <%= @student.stu_name %></div>
-<div>N. de id.: <%= @student.stu_identification %></div>
-<div>Facultad: <%= @student.stu_facultad %></div>
-<div>Carrera: <%= @student.stu_carrera %><br></div>
-<%= render 'devise/shared/links'%>
-
-<!--Quitar-->
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-<!---->
+	<!--Quitar-->
+	<% if notice %>
+	  <p class="alert alert-success"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+	  <p class="alert alert-danger"><%= alert %></p>
+	<% end %>
+	<!---->
+</div>

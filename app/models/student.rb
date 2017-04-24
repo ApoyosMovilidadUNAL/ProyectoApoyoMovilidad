@@ -28,10 +28,24 @@ class Student < ApplicationRecord
 
         where("stu_name LIKE ?","%#{nombre}%").find_each do |stud|
             arr.push(stud.id)
-            puts "=================="
-            puts stud.id
         end
         Request.request_by_student(arr).paginate(:page => 1, :per_page => 10)
+    end
+
+    def self.request_by_student_and_professor(nombreStudent, nombreProfessor)
+        #Client.where(orders_count: [1,3,5])
+        arrStudent = []
+        arrProfessor = []
+        
+        where("stu_name LIKE ?","%#{nombreStudent}").find_each do |stud|
+            arrStudent.push(stud.id)
+        end
+        Professor.where("pro_name LIKE ?","%#{nombreProfessor}").find_each do |prof|
+            arrProfessor.push(prof.id)
+        end
+
+        Request.request_by_professor_and_student(arrStudent,arrProfessor)
+        .paginate(:page => 1, :per_page => 10)
     end
 
     #Consulta solicitudes asociadas a un estudiante por correo

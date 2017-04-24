@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   		@student = Student.find_by(stu_email: current_user.email)
 	  	if (request.path.include? '/admin' and @student.stu_rol != 1) or
 	  		(request.path.include? '/student' and @student.stu_rol != 2)
-	      redirect_to authenticated_root_path # change this to your 404 page if needed
+	      redirect_to authenticated_root_path 
 	    end
   	end
   end
