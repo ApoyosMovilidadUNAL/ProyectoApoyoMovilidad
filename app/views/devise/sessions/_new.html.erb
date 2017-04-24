@@ -1,17 +1,15 @@
-<div style="background-color: #666; padding-left: 2%; font-size: 13px !important; color: #eee">
-  <div>
-    <h2>Entrar</h2>
-  </div>
+<div style="background-color: #666; padding-left: 2%; color: #eee">
+    <h2 style="font-size: 1.8em  ">Entrar</h2>
 </div>
 <div style="background-color: #fff; padding: 2%">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "loginForm") do |f| %>
-    <div class="form-group">
-      <%= f.label :correo %><br />
+    <div class="form-group" style="font-size: 1.3em">
+      <%= f.label :correo %>
       <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
     </div>
 
-    <div class="field">
-      <%= f.label :Contraseña %><br />
+    <div class="field" style="font-size: 1.3em">
+      <%= f.label :Contraseña %>
       <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
     </div>
 
