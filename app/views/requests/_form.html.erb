@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :req_estado %>
-    <%= f.number_field :req_estado %>
+    <%= f.hidden_field :req_estado, value: 1 %>
   </div>
 
   <div class="field">
@@ -22,23 +21,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :student_id %>
-    <%= f.text_field :student_id %>
+    <%= f.hidden_field :student_id, value: @student.id %>
   </div>
 
   <div class="field">
-    <%= f.label :professor_id %>
-    <%= f.text_field :professor_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :document_id %>
-    <%= f.text_field :document_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :support_id %>
-    <%= f.text_field :support_id %>
+    <%= f.hidden_field :professor_id, value: 1 %>
   </div>
 
   <div class="actions">

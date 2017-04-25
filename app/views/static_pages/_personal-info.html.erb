@@ -1,0 +1,16 @@
+
+
+<div>Nombre: <%= @student.stu_name %></div>
+<div>N. de id.: <%= @student.stu_identification %></div>
+<div>Facultad: <%= @student.stu_facultad %></div>
+<div>Carrera: <%= @student.stu_carrera %><br></div>
+<%= render 'devise/shared/links'%>
+
+<!--Quitar-->
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+<!---->

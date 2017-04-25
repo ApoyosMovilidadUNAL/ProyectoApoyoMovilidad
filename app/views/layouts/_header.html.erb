@@ -65,7 +65,25 @@
                 <div class="gcse-searchbox-only" data-resultsUrl="http://unal.edu.co/resultados-de-la-busqueda/" data-newWindow="true"></div>
             </div>
             <div class="mainMenu">
-                <div class="btn-group"><a href="#" target="_self" class="btn btn-default ">Inicio</a><span class="caret-right"></span></div>
+                <div class="btn-group"><a href="/" target="_self" class="btn btn-default ">Inicio</a><span class="caret-right"></span></div>
+                
+                <% if current_user %>
+                    <%case @student.stu_rol
+                    when 1%>
+                        <div class="btn-group"><a href="/admin/requests" target="_self" class="btn btn-default ">Solicitudes</a><span class="caret-right"></span></div>
+                        <div class="btn-group"><a href="/admin/requests-history" target="_self" class="btn btn-default ">Historial</a><span class="caret-right"></span></div>
+
+                        <div class="btn-group"><a href="/admin/requests-history" target="_self" class="btn btn-default ">Estadísticas</a><span class="caret-right"></span></div>
+                    <%when 2%>
+                        <div class="btn-group"><a href="/student/requests" target="_self" class="btn btn-default ">Solicitudes</a><span class="caret-right"></span></div>
+                <%end%>
+                
+                <% end %>
+                
+                <% if current_user && @student.stu_rol == 1 %>
+                
+                <% end %>
+
                 <div class="btn-group">
                     <div class="btn btn-default dropdown-toggle" data-toggle="dropdown">Sedes<span class="caret"></span></div>
                     <ul class="dropdown-menu dropItem-16">

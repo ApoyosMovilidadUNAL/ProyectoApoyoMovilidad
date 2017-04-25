@@ -1,34 +1,56 @@
-<p id="notice"><%= notice %></p>
+<main class="detalle" >
+  <div class="breadcrumb-class">
+      Está en:<a href="#" target="_self" title="Inicio"></a>
+    </div>
 
-<p>
-  <strong>Req estado:</strong>
-  <%= @request.req_estado %>
-</p>
+  <div class="container-fluid">
+    <div class="container-fluid">
+      <div class="col-md-4">
+        <p>
+        <strong>Estado:</strong>
+          <% if @request.req_estado == 1 %>
+              <span><strong>Pendiente</strong></span>
+            <% elsif @request.req_estado == 2 %>
+              <span><strong>En revisión</strong></span>
+            <% elsif @request.req_estado == 3 %>
+              <span><strong>Devuelto</strong></span>
+            <% elsif @request.req_estado == 4 %>
+              <span><strong>En espera de soportes</strong></span>
+            <% elsif @request.req_estado == 5 %>
+              <span><strong>Terminada</strong></span>
+            <% end %>
+        </p>      
+      </div>
+      <div class="col-md-4">
+        <p>
+          <strong>Profesor:</strong>
+          <%= @request.professor.pro_name %>
+        </p>    
+      </div>
+      <div class="col-md-4">  
+        <p>
+          <strong>Estudiante:</strong>
+          <%= @request.student.stu_name %>
+        </p>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="col-md-4">
+       <p>
+          <strong>Req descripcion:</strong>
+          <%= @request.req_descripcion %>
+        </p> 
+      </div>
+      <div class="col-md-8">
+        <%= render 'documents/index', {locales: @student} %>
+        <%case @request.req_estado
+        when 4%>
+          <%= render 'supports/index', {locales: @student} %>
+        <%end%>
+        
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Req descripcion:</strong>
-  <%= @request.req_descripcion %>
-</p>
-
-<p>
-  <strong>Student:</strong>
-  <%= @request.student %>
-</p>
-
-<p>
-  <strong>Professor:</strong>
-  <%= @request.professor %>
-</p>
-
-<p>
-  <strong>Document:</strong>
-  <%= @request.document %>
-</p>
-
-<p>
-  <strong>Support:</strong>
-  <%= @request.support %>
-</p>
-
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+  <br>
+</main>
