@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/cschiewek/devise_ldap_authenticatable.git
+  revision: 9f7699d913f715afd4f2a99b80733eda52b1d88a
+  specs:
+    devise_ldap_authenticatable (0.8.6)
+      devise (>= 3.4.1)
+      net-ldap (>= 0.6, != 0.12)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -101,6 +109,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
+    net-ldap (0.16.0)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -192,6 +201,7 @@ DEPENDENCIES
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
   devise
+  devise_ldap_authenticatable!
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

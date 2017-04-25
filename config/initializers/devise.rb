@@ -1,12 +1,23 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # ==> LDAP Configuration 
+  config.ldap_logger = true
+  config.ldap_create_user = true
+  # config.ldap_update_password = true
+  # config.ldap_config = "#{Rails.root}/config/ldap.yml"
+  # config.ldap_check_group_membership = false
+  # config.ldap_check_group_membership_without_admin = false
+  # config.ldap_check_attributes = false
+  # config.ldap_use_admin_to_bind = false
+  # config.ldap_ad_group_check = false
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '51bd9086a5df684e9a995e3446b049210eb57ef13de6c5df7f012117d034f845390ae7f617be0e4707e7da14cd3872d83780063e5efe51f3e9a89c8bb88542b4'
+  # config.secret_key = '72dface5951e3409e966ab6f9870be55f13683a10790447a250612686ce40879ba2930a820cc7d6c46d400726be1e025240e396cf85e4c6acec3560f84292f88'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -108,7 +119,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'bc3f073179cf79f6af19e84a943b955d15dffdde61752925c0f7b902446e0616c4178846f5d2508074599fb22bd1ab1f73f6b06644d0933a7e25e54990ec07ab'
+  # config.pepper = 'b266cd7591c8f8d317022b5550934ce3d16996f3e4ac648de506cb325e0fa761c543d00c21380276dced160cf076da6321e812131c79c9198b3ad01c2e53104f'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
