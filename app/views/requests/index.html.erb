@@ -8,8 +8,7 @@
       <%= render 'static_pages/personal-info' %>
     </div>
     <div class="col-md-9" style="padding-top: 0">
-      <div class="container-fluid" style="padding-top: 2%; background-color: #eee">
-
+      <div class="container-fluid" style="padding-top: 2%; padding-bottom: 15px; background-color: #eee">
 
         <% if @student.stu_rol == 2 %>
         <div class="row">
@@ -27,7 +26,7 @@
           <div class="row">
            <h1>Solicitudes</h1>
           </div> 
-          <div class="row">
+          <div class="row" style="padding-bottom: 15px">
             <%= form_tag admin_requests_path, :method => 'get', class: "form-inline" do%>
               <div class="form-group " >  
                 <label class="sr-only">Profesor</label>
@@ -51,46 +50,92 @@
         </div>  
         <% end %>
 
-        <table class="table table-hover table-condensed">
-          <thead>
-            <tr>
-              <th>Estado</th>
-              <th>Estudiante</th>
-              <th>Profesor</th>
-              <th>Descripcion</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
+        <div style="text-align: center;">
+          
+          <div class="col-xs-12 table-head">
+            <div style="width: 100%">
+              <div class="col-md-3 col-xs-3">Estado</div>
+              <div class="col-md-3 col-xs-3">Estudiante</div>
+              <div class="col-md-3 col-xs-3">Profesor</div>
+              <div class="col-md-3 col-xs-3">Descripcion</div>
+            </div>
+          </div class="row">
 
-          <tbody>
             <% @requests.each do |request| %>
-              <tr class="<%= (request.req_estado == 1) ? 'danger' : ((request.req_estado == 2) ? 'info' : (  request.req_estado == 3 ? 'warning' : 'success') ) %>" >
-                <td>
-                  <% if request.req_estado == 1 %>
-                    <span><strong>Pendiente</strong></span>
-                  <% elsif request.req_estado == 2 %>
-                    <span><strong>En revisión</strong></span>
-                  <% elsif request.req_estado == 3 %>
-                    <span><strong>Devuelto</strong></span>
-                  <% elsif request.req_estado == 4 %>
-                    <span><strong>En espera de soportes</strong></span>
-                  <% elsif request.req_estado == 5 %>
-                    <span><strong>Terminada</strong></span>
-                  <% end %>
-                </td>
-                <td><%= request.student.stu_name %></td>
-                <td><%= request.professor.pro_name %></td>
-                <td><%= request.req_descripcion %></td>
-                <%case @student.stu_rol
+              <div>
+
+              <%case @student.stu_rol
                   when 1%>
-                  <td><%= link_to 'Detalles', admin_request_path(request) %></td>
-                  <% when 2 %>
-                  <td><%= link_to 'Detalles', student_request_path(request) %></td>
+                  <div class=" col-xs-12 ", style= "padding: 1px;" >
+                  <% state_class = (request.req_estado == 1) ? 'pendiente' : ((request.req_estado == 2) ? 'revision' : (  request.req_estado == 3 ? 'devuelto' : 'soportes') ) %>
+                  <%= link_to admin_request_path(request), class: "#{state_class} col-xs-12 no-decoration  ", style: "padding: 0" do%>
+                    <div>
+                        
+                      <div class="col-md-3 col-xs-3">
+                        <% if request.req_estado == 1 %>
+                          <span><strong>Pendiente</strong></span>
+                        <% elsif request.req_estado == 2 %>
+                          <span><strong>En revisión</strong></span>
+                        <% elsif request.req_estado == 3 %>
+                          <span><strong>Devuelto</strong></span>
+                        <% elsif request.req_estado == 4 %>
+                          <span><strong>En espera de soportes</strong></span>
+                        <% elsif request.req_estado == 5 %>
+                          <span><strong>Terminada</strong></span>
+                        <% end %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.student.stu_name %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.professor.pro_name %>  
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.req_descripcion %>
+                      </div>
+                    </div>
+                      
+                    
+                  <% end%>
+                <% when 2 %>
+                  <div class=" col-xs-12 ", style= "padding: 1px;" >
+                  <% state_class = (request.req_estado == 1) ? 'pendiente' : ((request.req_estado == 2) ? 'revision' : (  request.req_estado == 3 ? 'devuelto' : 'soportes') ) %>
+                  <%= link_to student_request_path(request), class: "#{state_class} col-xs-12 no-decoration  ", style: "padding: 0" do%>
+                    <div>
+                        
+                      <div class="col-md-3 col-xs-3">
+                        <% if request.req_estado == 1 %>
+                          <span><strong>Pendiente</strong></span>
+                        <% elsif request.req_estado == 2 %>
+                          <span><strong>En revisión</strong></span>
+                        <% elsif request.req_estado == 3 %>
+                          <span><strong>Devuelto</strong></span>
+                        <% elsif request.req_estado == 4 %>
+                          <span><strong>En espera de soportes</strong></span>
+                        <% elsif request.req_estado == 5 %>
+                          <span><strong>Terminada</strong></span>
+                        <% end %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.student.stu_name %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.professor.pro_name %>  
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.req_descripcion %>
+                      </div>
+                    </div>
+                      
+                    
+                  <% end%>
+                  </div>
                 <% end %>
-              </tr>
+              
+                
+              </div>
             <% end %>
-          </tbody>
-        </table>
+        </div>
 
         <% if @student.stu_rol == 1 %>
         <%= will_paginate @requests, renderer: BootstrapPagination::Rails %>
