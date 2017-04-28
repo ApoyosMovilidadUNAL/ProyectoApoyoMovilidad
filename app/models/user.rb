@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
 	def ldap_before_save
 		self.email = Devise::LDAP::Adapter.get_ldap_param(self.username,"mail").first
-		self.name = Devise::LDAP::Adapter.get_ldap_param(self.username,"givenname").first
-		self.lastname = Devise::LDAP::Adapter.get_ldap_param(self.username,"sn").first
+		#self.name = Devise::LDAP::Adapter.get_ldap_param(self.username,"givenname").first
+		#self.lastname = Devise::LDAP::Adapter.get_ldap_param(self.username,"sn").first
 	end
 end
