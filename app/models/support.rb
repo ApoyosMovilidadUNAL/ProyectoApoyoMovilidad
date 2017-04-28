@@ -1,6 +1,6 @@
 class Support < ApplicationRecord
 	has_one :requests
-	mount_uploader :sup_ruta, SupportUploader
+	#mount_uploader :sup_ruta, SupportUploader
 
 	#Consulta de support relaiconados a una solicitud
 	def self.support_by_request(id)

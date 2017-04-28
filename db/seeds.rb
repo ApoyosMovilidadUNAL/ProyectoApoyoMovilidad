@@ -41,7 +41,7 @@ end
 =end
 for x in(1..110)
   Request.create(
-  req_estado:1,
+  req_estado: (x%5) + 1,
   req_descripcion:x,
   student_id:x,
   professor_id:x

@@ -1,6 +1,6 @@
 class Document < ApplicationRecord
 	has_one :requests
-	mount_uploader :docu_ruta, DocumentUploader
+	#mount_uploader :docu_ruta, DocumentUploader
 
 	
 
