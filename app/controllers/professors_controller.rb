@@ -4,14 +4,12 @@ class ProfessorsController < ApplicationController
   # GET /professors
   # GET /professors.json
   def index
-    @professors = Professor.all.paginate(:page => params[:page], :per_page => 20)
+    @professors = Professor.all
   end
 
   # GET /professors/1
   # GET /professors/1.json
   def show
-    #@post = Professor.find(params[:id])
-    #render json: @post
   end
 
   # GET /professors/new
@@ -71,6 +69,6 @@ class ProfessorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def professor_params
-      params.require(:professor).permit(:pro_name, :pro_email, :pro_rol)
+      params.require(:professor).permit(:name, :lastname, :email)
     end
 end

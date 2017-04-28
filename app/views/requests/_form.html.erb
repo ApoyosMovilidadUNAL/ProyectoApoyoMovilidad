@@ -12,20 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= f.hidden_field :req_estado, value: 1 %>
+    <%= f.label :state %>
+    <%= f.number_field :state %>
   </div>
 
   <div class="field">
-    <%= f.label :req_descripcion %>
-    <%= f.text_area :req_descripcion %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
   </div>
 
   <div class="field">
-    <%= f.hidden_field :student_id, value: @student.id %>
+    <%= f.label :amount %>
+    <%= f.number_field :amount %>
   </div>
 
   <div class="field">
-    <%= f.hidden_field :professor_id, value: 1 %>
+    <%= f.label :place %>
+    <%= f.text_field :place %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Type %>
+    <%= f.number_field :Type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :student_id %>
+    <%= f.text_field :student_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :professor_id %>
+    <%= f.text_field :professor_id %>
   </div>
 
   <div class="actions">

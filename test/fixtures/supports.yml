@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  sup_name: MyString
-  sup_ruta: MyString
+  name: MyString
+  route: MyString
+  request: one
 
 two:
-  sup_name: MyString
-  sup_ruta: MyString
+  name: MyString
+  route: MyString
+  request: two

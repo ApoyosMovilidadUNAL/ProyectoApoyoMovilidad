@@ -1,89 +1,39 @@
-<main class="detalle" >
-  <div class="breadcrumb-class">
-      Está en:<a href="#" target="_self" title="Inicio"></a>
-    </div>
+<p id="notice"><%= notice %></p>
 
-  <div class="container-fluid">
-    <div class="container-fluid">
-      <div class="col-md-4">
-        <p>
-        <strong>Estado:</strong>
-          <% if @request.req_estado == 1 %>
-              <span><strong>Pendiente</strong></span>
-            <% elsif @request.req_estado == 2 %>
-              <span><strong>En revisión</strong></span>
-            <% elsif @request.req_estado == 3 %>
-              <span><strong>Devuelto</strong></span>
-            <% elsif @request.req_estado == 4 %>
-              <span><strong>En espera de soportes</strong></span>
-            <% elsif @request.req_estado == 5 %>
-              <span><strong>Terminada</strong></span>
-            <% end %>
-        </p>      
-      </div>
-      <div class="col-md-4">
-        <p>
-          <strong>Profesor:</strong>
-          <%= @request.professor.pro_name %>
-        </p>    
-      </div>
-      <div class="col-md-4">  
-        <p>
-          <strong>Estudiante:</strong>
-          <%= @request.student.stu_name %>
-        </p>
-      </div>
-    </div>
-    <div class="container-fluid">
-      <div class="col-md-4">
-       <p>
-          <strong>Req descripcion:</strong>
-          <%= @request.req_descripcion %>
-        </p> 
-      </div>
-      <div class="col-md-8">
-        <%= render 'documents/index', {locales: @student} %>
-        <% if @request.req_estado == 4 %>
-          <p>
-            <strong>Support:</strong>
-            <%= @request.support %>
-          </p>
-        <% end %>
-      </div>
-    </div>
-  </div>
+<p>
+  <strong>State:</strong>
+  <%= @request.state %>
+</p>
 
-  <br>
+<p>
+  <strong>Description:</strong>
+  <%= @request.description %>
+</p>
 
-  <% if @student.stu_rol == 1 %>
+<p>
+  <strong>Amount:</strong>
+  <%= @request.amount %>
+</p>
 
-    <% if @request.req_estado == 1 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 2 -%>
-        <%= submit_tag 'Revisar', class: 'btn btn-success' -%>
-      <%- end -%>
+<p>
+  <strong>Place:</strong>
+  <%= @request.place %>
+</p>
 
-    <% elsif @request.req_estado == 2 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 4 -%>
-        <%= submit_tag 'Aprobar', class: 'btn btn-success' -%>
-      <%- end -%>
+<p>
+  <strong>Type:</strong>
+  <%= @request.Type %>
+</p>
 
-    <% elsif @request.req_estado == 3 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 4 -%>
-        <%= submit_tag 'Aprobar', class: 'btn btn-success' -%>
-      <%- end -%>
+<p>
+  <strong>Student:</strong>
+  <%= @request.student %>
+</p>
 
-    <% elsif @request.req_estado == 4 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 5 -%>
-        <%= submit_tag 'Terminar', class: 'btn btn-success' -%>
-      <%- end -%>
-    <% end %>
+<p>
+  <strong>Professor:</strong>
+  <%= @request.professor %>
+</p>
 
-  <% end %>
-  <!--
-  <%= link_to 'Edit', edit_request_path(@request) %>
-  -->
-</main>
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

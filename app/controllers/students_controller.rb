@@ -4,14 +4,12 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all.paginate(:page => params[:page], :per_page => 20)
+    @students = Student.all
   end
 
   # GET /students/1
   # GET /students/1.json
   def show
-    #@post = Student.find(params[:id])
-    #render json: @post
   end
 
   # GET /students/new
@@ -71,6 +69,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:stu_name, :stu_email, :stu_rol, :stu_identification, :stu_facultad, :stu_carrera)
+      params.require(:student).permit(:name, :lastname, :email, :rol, :identification, :faculty, :career)
     end
 end

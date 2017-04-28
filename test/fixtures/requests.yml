@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  req_estado: 1
-  req_descripcion: MyText
+  state: 1
+  description: MyText
+  amount: 1
+  place: MyString
+  Type: 1
   student: one
   professor: one
 
 two:
-  req_estado: 1
-  req_descripcion: MyText
+  state: 1
+  description: MyText
+  amount: 1
+  place: MyString
+  Type: 1
   student: two
   professor: two

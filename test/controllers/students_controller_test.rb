@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class StudentsControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::ControllerHelpers
-
   setup do
     @student = students(:one)
   end
@@ -19,7 +17,7 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create student" do
     assert_difference('Student.count') do
-      post students_url, params: { student: { stu_carrera: @student.stu_carrera, stu_email: @student.stu_email, stu_facultad: @student.stu_facultad, stu_identification: @student.stu_identification, stu_name: @student.stu_name, stu_rol: @student.stu_rol } }
+      post students_url, params: { student: { career: @student.career, email: @student.email, faculty: @student.faculty, identification: @student.identification, lastname: @student.lastname, name: @student.name, rol: @student.rol } }
     end
 
     assert_redirected_to student_url(Student.last)
@@ -36,7 +34,7 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update student" do
-    patch student_url(@student), params: { student: { stu_carrera: @student.stu_carrera, stu_email: @student.stu_email, stu_facultad: @student.stu_facultad, stu_identification: @student.stu_identification, stu_name: @student.stu_name, stu_rol: @student.stu_rol } }
+    patch student_url(@student), params: { student: { career: @student.career, email: @student.email, faculty: @student.faculty, identification: @student.identification, lastname: @student.lastname, name: @student.name, rol: @student.rol } }
     assert_redirected_to student_url(@student)
   end
 

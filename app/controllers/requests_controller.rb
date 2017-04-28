@@ -4,20 +4,16 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all.paginate(:page => params[:page], :per_page => 20)
+    @requests = Request.all
   end
 
   # GET /requests/1
   # GET /requests/1.json
   def show
-    @student = Student.find_by(stu_email: current_user.email)
-    #@post = Request.find(params[:id])
-    #render json: @post
   end
 
   # GET /requests/new
   def new
-    @student = Student.find_by(stu_email: current_user.email)
     @request = Request.new
   end
 
@@ -28,7 +24,6 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @student = Student.find_by(stu_email: current_user.email)
     @request = Request.new(request_params)
 
     respond_to do |format|
@@ -74,10 +69,6 @@ class RequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
-      if params[:request]
-        params.require(:request).permit(:req_estado, :req_descripcion, :student_id, :professor_id)
-      else
-        params.permit(:req_estado, :req_descripcion, :student_id, :professor_id)
-      end
+      params.require(:request).permit(:state, :description, :amount, :place, :Type, :student_id, :professor_id)
     end
 end

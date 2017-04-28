@@ -1,23 +1,8 @@
 Rails.application.routes.draw do
-
-  devise_for :users
-  resources :requests
   resources :supports
   resources :documents
+  resources :requests
   resources :professors
   resources :students
-
-  devise_scope :user do
-    authenticated :user do
-      root 'static_pages#home', as: :authenticated_root
-      get '/user-requests', to: 'static_pages#requests'
-      get '/requests-history', to: 'static_pages#history'
-      get '/professors-by-name', to: 'static_pages#professors_by_name'
-    end
-
-    unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
-    end
-  end
-
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

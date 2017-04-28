@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  stu_name: MyString
-  stu_email: MyString
-  stu_rol: 1
-  stu_identification: 1
-  stu_facultad: MyString
-  stu_carrera: MyString
+  name: MyString
+  lastname: MyString
+  email: MyString
+  rol: 1
+  identification: 1
+  faculty: MyString
+  career: MyString
 
 two:
-  stu_name: MyString
-  stu_email: MyString
-  stu_rol: 1
-  stu_identification: 1
-  stu_facultad: MyString
-  stu_carrera: MyString
+  name: MyString
+  lastname: MyString
+  email: MyString
+  rol: 1
+  identification: 1
+  faculty: MyString
+  career: MyString

@@ -17,7 +17,7 @@ class RequestsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create request" do
     assert_difference('Request.count') do
-      post requests_url, params: { request: { document_id: @request.document_id, professor_id: @request.professor_id, req_descripcion: @request.req_descripcion, req_estado: @request.req_estado, student_id: @request.student_id, support_id: @request.support_id } }
+      post requests_url, params: { request: { Type: @request.Type, amount: @request.amount, description: @request.description, place: @request.place, professor_id: @request.professor_id, state: @request.state, student_id: @request.student_id } }
     end
 
     assert_redirected_to request_url(Request.last)
@@ -34,7 +34,7 @@ class RequestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update request" do
-    patch request_url(@request), params: { request: { document_id: @request.document_id, professor_id: @request.professor_id, req_descripcion: @request.req_descripcion, req_estado: @request.req_estado, student_id: @request.student_id, support_id: @request.support_id } }
+    patch request_url(@request), params: { request: { Type: @request.Type, amount: @request.amount, description: @request.description, place: @request.place, professor_id: @request.professor_id, state: @request.state, student_id: @request.student_id } }
     assert_redirected_to request_url(@request)
   end
 
