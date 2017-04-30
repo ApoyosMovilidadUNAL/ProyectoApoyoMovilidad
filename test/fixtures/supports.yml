@@ -3,9 +3,9 @@
 one:
   name: MyString
   route: MyString
-  request: one
+  request: 1
 
 two:
-  name: MyString
-  route: MyString
-  request: two
+  name: MyString2
+  route: MyString2
+  request: 2

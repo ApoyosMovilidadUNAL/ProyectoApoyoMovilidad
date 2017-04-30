@@ -5,7 +5,7 @@ class CreateRequests < ActiveRecord::Migration[5.0]
       t.text :description
       t.integer :amount
       t.string :place
-      t.integer :Type
+      t.integer :type_req
       t.references :student, foreign_key: true
       t.references :professor, foreign_key: true
 

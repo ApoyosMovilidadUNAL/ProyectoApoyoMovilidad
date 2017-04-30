@@ -3,17 +3,17 @@
 one:
   name: MyString
   lastname: MyString
-  email: MyString
-  rol: 1
+  email: MyString@unal.edu.co
+  rol: 2
   identification: 1
   faculty: MyString
   career: MyString
 
 two:
-  name: MyString
-  lastname: MyString
-  email: MyString
-  rol: 1
+  name: MyString2
+  lastname: MyString2
+  email: MyString2@unal.edu.co
+  rol: 2
   identification: 1
-  faculty: MyString
-  career: MyString
+  faculty: MyString2
+  career: MyString2

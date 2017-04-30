@@ -25,19 +25,19 @@ ActiveRecord::Schema.define(version: 20170428024900) do
   end
 
   create_table "professors", force: :cascade do |t|
-    t.string   "name"
-    t.string   "lastname"
-    t.string   "email"
+    t.string   "name",       null: false
+    t.string   "lastname",   null: false
+    t.string   "email",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer  "state"
+    t.integer  "state",        null: false
     t.text     "description"
-    t.integer  "amount"
-    t.string   "place"
-    t.integer  "Type"
+    t.integer  "amount",       null: false
+    t.string   "place",        null: false
+    t.integer  "type_req"
     t.integer  "student_id"
     t.integer  "professor_id"
     t.datetime "created_at",   null: false
@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(version: 20170428024900) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "name"
-    t.string   "lastname"
-    t.string   "email"
-    t.integer  "rol"
-    t.integer  "identification"
-    t.string   "faculty"
-    t.string   "career"
+    t.string   "name",           null: false
+    t.string   "lastname",       null: false
+    t.string   "email",          null: false
+    t.integer  "rol",            null: false
+    t.integer  "identification", null: false
+    t.string   "faculty",        null: false
+    t.string   "career",         null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

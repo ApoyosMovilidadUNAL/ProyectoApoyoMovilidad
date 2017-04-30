@@ -3,17 +3,17 @@
 one:
   state: 1
   description: MyText
-  amount: 1
+  amount: 100
   place: MyString
   Type: 1
-  student: one
-  professor: one
+  student: 1
+  professor: 1
 
 two:
   state: 1
   description: MyText
-  amount: 1
-  place: MyString
-  Type: 1
-  student: two
-  professor: two
+  amount: 200
+  place: MyString2
+  Type: 2
+  student: 2
+  professor: 2

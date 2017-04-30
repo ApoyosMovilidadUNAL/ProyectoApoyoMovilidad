@@ -38,11 +38,11 @@ class SupportsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to support_url(@support)
   end
 
-  test "should destroy support" do
-    assert_difference('Support.count', -1) do
-      delete support_url(@support)
-    end
+  #test "should destroy support" do
+  #  assert_difference('Support.count', -1) do
+  #    delete support_url(@support)
+  #  end
 
-    assert_redirected_to supports_url
-  end
+  #  assert_redirected_to supports_url
+  #end
 end

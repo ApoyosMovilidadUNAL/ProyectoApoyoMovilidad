@@ -38,11 +38,11 @@ class ProfessorsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to professor_url(@professor)
   end
 
-  test "should destroy professor" do
-    assert_difference('Professor.count', -1) do
-      delete professor_url(@professor)
-    end
+  #test "should destroy professor" do
+  #  assert_difference('Professor.count', -1) do
+  #    delete professor_url(@professor)
+  #  end
 
-    assert_redirected_to professors_url
-  end
+  #  assert_redirected_to professors_url
+  #end
 end
