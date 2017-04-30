@@ -3,9 +3,9 @@
 #
 # Examples:
 #
-# movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-# Character.create(name: 'Luke', movie: movies.first)
-
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+=begin
 for x in(1..5)
   Professor.create!(
   name:"name_pro#{x}",
@@ -61,5 +61,5 @@ for x in(1..5)
   request_id:x
   )
 end
-
+=end
 

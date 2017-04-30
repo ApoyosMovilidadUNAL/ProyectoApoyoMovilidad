@@ -5,7 +5,7 @@ one:
   description: MyText
   amount: 100
   place: MyString
-  Type: 1
+  type_req: 1
   student: 1
   professor: 1
 
@@ -14,6 +14,6 @@ two:
   description: MyText
   amount: 200
   place: MyString2
-  Type: 2
+  type_req: 2
   student: 2
   professor: 2

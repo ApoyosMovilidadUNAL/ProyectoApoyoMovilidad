@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 
+gem "devise_ldap_authenticatable", :git => "git://github.com/cschiewek/devise_ldap_authenticatable.git"
+
 gem 'bootstrap-sass', '3.3.6'
 gem 'will_paginate-bootstrap'
 
