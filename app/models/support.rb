@@ -1,7 +1,7 @@
 class Support < ApplicationRecord
   	belongs_to :request
 
-  	#mount_uploader :sup_ruta, SupportUploader
+  	#mount_uploader :route, SupportUploader
 
 	#Consulta de support relaiconados a una solicitud
 	def self.support_by_request(id)

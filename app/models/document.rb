@@ -2,7 +2,7 @@ class Document < ApplicationRecord
   	belongs_to :request
 	#has_one :requests
 
-  	#mount_uploader :docu_ruta, DocumentUploader
+  	#mount_uploader :route, DocumentUploader
   	validates :name, :presence => {:message => "Campo esta en blanco." }
 	#Consulta de documentos relaiconados a una solicitud
    	def self.document_by_request(id)

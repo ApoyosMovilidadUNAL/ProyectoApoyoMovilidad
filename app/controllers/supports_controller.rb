@@ -4,12 +4,14 @@ class SupportsController < ApplicationController
   # GET /supports
   # GET /supports.json
   def index
-    @supports = Support.all
+    @supports = Support.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /supports/1
   # GET /supports/1.json
   def show
+    #@post = Support.find(params[:id])
+    #render json: @post
   end
 
   # GET /supports/new
