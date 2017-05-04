@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       root 'static_pages#home', as: :authenticated_root
       scope :admin, as: :admin do
         get '/requests-history', to: 'requests#history'
+        get '/statistics', to: 'requests#statistics'
         resources :requests
         resources :students
         resources :supports

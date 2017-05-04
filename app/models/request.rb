@@ -4,7 +4,7 @@
 	has_many :document
 	has_many :support
 
-  	default_scope {order("requests.created_at ASC")}
+  	#default_scope {order("requests.created_at ASC")}
 	#Validaciones
         #Validamos que los campos se ingresen.
     validates :state, :amount, :place, :presence => {:message => "Campo esta en blanco." }
