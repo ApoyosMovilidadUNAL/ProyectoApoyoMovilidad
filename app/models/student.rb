@@ -47,10 +47,10 @@ class Student < ApplicationRecord
         arrStudent = []
         arrProfessor = []
         
-        where("name LIKE ?","%#{nombreStudent}").find_each do |stud|
+        where("name LIKE ?","%#{nombreStudent}%").find_each do |stud|
             arrStudent.push(stud.id)
         end
-        Professor.where("name LIKE ?","%#{nombreProfessor}").find_each do |prof|
+        Professor.where("name LIKE ?","%#{nombreProfessor}%").find_each do |prof|
             arrProfessor.push(prof.id)
         end
 

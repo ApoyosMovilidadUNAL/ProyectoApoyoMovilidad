@@ -1,24 +1,16 @@
 <main class="detalle">
     <div class="breadcrumb-class">
     	Está en:<a href="#" target="_self" title="Inicio">Inicio</a>
+    	<h1 style="text-align: center;">Bienvenido <%= @student.name %></h1>
     </div>
     <div class="container-fluid" style="padding: 2%">
 		  <div class="row">
-		    <div class="col-md-3" style="padding: 1%; background-color: #aaa">
+		    <div class="col-md-3" style="padding: 1%; background-color: #ccc">
 					<%= render 'static_pages/personal-info' %>
-		    </div>
-  			<div class="col-md-9">
-  				<h1 class="container-fluid"> Bienvenido, <%= @student.name %> </h1>
-  				<ul class="bxslider">
-					  <li>
-					  	<%= image_tag("conv-movilidad-2016-2018-un-boletin.png", class:'hidden-print') %>
-					  </li>
-					  <li>
-							<%= image_tag("movilidadesUNAL.png", height: '150%', width:'150%', class:'hidden-print') %>
-					  </li>
-					</ul>
-  			</div>
-		  </div>
+			</div>
+		    <div>
+		    	<%= render 'layouts/gallery' %>
+		    </div>		
 		</div>
 
 </main>

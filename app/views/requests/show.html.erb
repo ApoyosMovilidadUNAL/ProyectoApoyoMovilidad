@@ -2,8 +2,41 @@
   <div class="breadcrumb-class">
       Está en:<a href="#" target="_self" title="Inicio"></a>
     </div>
-
-  <div class="container-fluid">
+  <% state_class = (@request.state == 1) ? 'pendiente' : ((@request.state == 2) ? 'revision' : (  @request.state == 3 ? 'devuelto' : 'soportes') ) %>
+  <div class="container-fluid ">
+    <div class="row <%= state_class %>" >
+      <div class="col-md-9 ">
+        
+      </div>
+      <div class="col-md-3" style="padding: 2px" >
+        <%case @request.state
+        when 1%>
+          <%= form_for admin_request_path([:admin, @request]), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 2 %>
+            <%= submit_tag 'Revisar', class: 'btn revision' %>
+          <% end %>
+        <%when 2 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 4 %>
+            <%= submit_tag 'Aprobar', class: 'btn soportes' %>
+          <% end %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 3 %>
+            <%= submit_tag 'Devolver', class: 'btn devuelto' %>
+          <% end %>
+        <%when 3 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 2 %>
+            <%= submit_tag 'Revisar', class: 'btn revision' %>
+          <% end %>
+        <%when 4 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 5 %>
+            <%= submit_tag 'Terminar', class: 'btn soportes' %>
+          <% end %>
+        <%end%>
+      </div>
+    </div>
     <div class="container-fluid">
       <div class="col-md-4">
         <p>
@@ -24,20 +57,20 @@
       <div class="col-md-4">
         <p>
           <strong>Profesor:</strong>
-          <%= @request.professor.name %>
+          <%= @request.professor.name %> <%= @request.professor.lastname %>
         </p>    
       </div>
       <div class="col-md-4">  
         <p>
           <strong>Estudiante:</strong>
-          <%= @request.student.name %>
+          <%= @request.student.name %> <%= @request.student.lastname %>
         </p>
       </div>
     </div>
     <div class="container-fluid">
       <div class="col-md-4">
        <p>
-          <strong>Req descripcion:</strong>
+          <strong>Descripción:</strong>
           <%= @request.description %>
         </p> 
       </div>

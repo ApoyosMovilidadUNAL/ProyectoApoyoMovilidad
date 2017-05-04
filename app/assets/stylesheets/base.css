@@ -1,1 +1,12 @@
 @import "bootstrap";
+
+body{
+	background-image: url('/assets/cyt.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+main{
+	background-color: rgba( 256, 256, 256, .8);
+}
