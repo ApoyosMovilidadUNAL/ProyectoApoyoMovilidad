@@ -1,4 +1,5 @@
-<%= form_for([:student, @request]) do |f| %>
+<div class="panel-body">
+<%= form_for([:student, @request], :html => {:class => "form-horizontal"}) do |f| %>
   <% if request.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
@@ -11,42 +12,76 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :state %>
-    <%= f.number_field :state %>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Nombre, class:"text-info" %></font>
+      <div class="col-lg-10">
+        <font size="4"><p class="form-control-static"><%= @student.name %></p></font>
+      </div>
+    </div>
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Numero_de_documento, class:"text-info" %></font>
+      <%= f.text_field :student_id , class: "form-control"%>
+    </div>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Valor_solicitado, class:"text-info" %></font>
+      <%= f.number_field :amount, class: "form-control" %>
+    </div>
+   
+    <div class="col-md-1">
+    </div>
+
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Lugar_al_que_viaja, class:"text-info" %></font>
+      <%= f.text_field :place, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Tipo_de_solicitud, class:"text-info" %></font>
+      <%= f.select :type_req, ['Solicitud 1','Solicitud 2','Solicitud 3'], {}, {:class => 'form-control'} %>
+    </div>
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :id_profesor, class:"text-info" %></font>
+      <%= f.text_field :professor_id, class: "form-control"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :amount %>
-    <%= f.number_field :amount %>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-9">
+      <font size="4"><%= f.label :Descripcion, class:"text-info" %></font>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :place %>
-    <%= f.text_field :place %>
+  <div class="form-group">
+    <%= f.label :Estado %>
+    <%= f.number_field :state, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :type_req %>
-    <%= f.number_field :type_req %>
-  </div>
-
-  <div class="field">
-    <%= f.label :student_id %>
-    <%= f.text_field :student_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :professor_id %>
-    <%= f.text_field :professor_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit "Crear Solicitud", class: "btn btn-success"%>
   </div>
 <% end %>
+</div>
