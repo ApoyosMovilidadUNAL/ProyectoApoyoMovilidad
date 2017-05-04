@@ -16,11 +16,11 @@
             <%= submit_tag 'Revisar', class: 'btn revision' %>
           <% end %>
         <%when 2 %>
-          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 4 %>
             <%= submit_tag 'Aprobar', class: 'btn soportes' %>
           <% end %>
-          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 3 %>
             <%= submit_tag 'Devolver', class: 'btn devuelto' %>
           <% end %>
