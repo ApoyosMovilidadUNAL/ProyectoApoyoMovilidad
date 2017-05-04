@@ -33,7 +33,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.html { redirect_to [:student, @request], notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
         format.html { render :new }
@@ -90,9 +90,9 @@ class RequestsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def request_params
       if params[:request]
-        params.require(:request).permit(:state, :description, :student_id, :professor_id)
+        params.require(:request).permit(:type_req, :state, :amount, :place, :description, :student_id, :professor_id)
       else
-        params.permit(:state, :description, :student_id, :professor_id)
+        params.permit(:type_req, :state, :amount, :place, :description, :student_id, :professor_id)
       end
     end
 end

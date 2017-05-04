@@ -6,16 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Student.create!(
-  name:"estudiante1",
-  lastname:"lastname1",
-  email:"estudiante1@unal.edu.co",
-  rol:1,
-  identification: 1,
-  faculty: 'ingenieria',
-  career:'ingenieria de sistemas')
-
-=begin
 for x in(1..5)
   Professor.create!(
   name:"name_pro#{x}",
@@ -23,6 +13,7 @@ for x in(1..5)
   email:"profe#{x}@unal.edu.co")
 end
 
+=begin
 for x in(2..5)
   Student.create!(
   name:"estudiante#{x}",

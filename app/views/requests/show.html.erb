@@ -1,39 +1,58 @@
-<p id="notice"><%= notice %></p>
+<main class="detalle" >
+  <div class="breadcrumb-class">
+      Está en:<a href="#" target="_self" title="Inicio"></a>
+    </div>
 
-<p>
-  <strong>State:</strong>
-  <%= @request.state %>
-</p>
+  <div class="container-fluid">
+    <div class="container-fluid">
+      <div class="col-md-4">
+        <p>
+        <strong>Estado:</strong>
+          <% if @request.state == 1 %>
+              <span><strong>Pendiente</strong></span>
+            <% elsif @request.state == 2 %>
+              <span><strong>En revisión</strong></span>
+            <% elsif @request.state == 3 %>
+              <span><strong>Devuelto</strong></span>
+            <% elsif @request.state == 4 %>
+              <span><strong>En espera de soportes</strong></span>
+            <% elsif @request.state == 5 %>
+              <span><strong>Terminada</strong></span>
+            <% end %>
+        </p>      
+      </div>
+      <div class="col-md-4">
+        <p>
+          <strong>Profesor:</strong>
+          <%= @request.professor.name %>
+        </p>    
+      </div>
+      <div class="col-md-4">  
+        <p>
+          <strong>Estudiante:</strong>
+          <%= @request.student.name %>
+        </p>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="col-md-4">
+       <p>
+          <strong>Req descripcion:</strong>
+          <%= @request.description %>
+        </p> 
+      </div>
+      <div class="col-md-8">
+        <%= render 'documents/index', {locales: @student} %>
+        <%case @request.state
+        when 4%>
+          <%= render 'supports/index', {locales: @student} %>
+        <% when 5%>
+          <%= render 'supports/index', {locales: @student} %>
+        <%end%>
+        
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @request.description %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @request.amount %>
-</p>
-
-<p>
-  <strong>Place:</strong>
-  <%= @request.place %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @request.type_req %>
-</p>
-
-<p>
-  <strong>Student:</strong>
-  <%= @request.student %>
-</p>
-
-<p>
-  <strong>Professor:</strong>
-  <%= @request.professor %>
-</p>
-
-<%= link_to 'Edit', edit_request_path(@request) %> |
-<%= link_to 'Back', requests_path %>
+  <br>
+</main>
