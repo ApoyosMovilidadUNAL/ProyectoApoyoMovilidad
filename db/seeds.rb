@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+=begin
 for x in(1..5)
   Professor.create!(
   name:"name_pro#{x}",
@@ -13,7 +13,7 @@ for x in(1..5)
   email:"profe#{x}@unal.edu.co")
 end
 
-=begin
+
 for x in(2..5)
   Student.create!(
   name:"estudiante#{x}",
