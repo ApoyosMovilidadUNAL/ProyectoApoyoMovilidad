@@ -4,12 +4,14 @@ class SupportsController < ApplicationController
   # GET /supports
   # GET /supports.json
   def index
+    @student = Student.find_by(email: current_user.email)
     @supports = Support.all.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /supports/1
   # GET /supports/1.json
   def show
+    @student = Student.find_by(email: current_user.email)
     #@post = Support.find(params[:id])
     #render json: @post
   end
@@ -30,7 +32,7 @@ class SupportsController < ApplicationController
 
     respond_to do |format|
       if @support.save
-        format.html { redirect_to @support, notice: 'Support was successfully created.' }
+        format.html { redirect_to [:student, @support], notice: 'Support was successfully created.' }
         format.json { render :show, status: :created, location: @support }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class SupportsController < ApplicationController
   def update
     respond_to do |format|
       if @support.update(support_params)
-        format.html { redirect_to @support, notice: 'Support was successfully updated.' }
+        format.html { redirect_to [:student, @support], notice: 'Support was successfully updated.' }
         format.json { render :show, status: :ok, location: @support }
       else
         format.html { render :edit }

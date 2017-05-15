@@ -16,9 +16,10 @@ Rails.application.routes.draw do
         resources :requests, only: [:index, :new, :create, :show, :update]
         resources :students
         resources :supports
+        resources :documents
       end
 
-      resources :documents
+      #resources :documents
       get '/user-requests', to: 'static_pages#requests'
       get '/requests-history', to: 'static_pages#history'
       get '/professors-by-name', to: 'static_pages#professors_by_name'
