@@ -65,6 +65,7 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
+        NotifyStatusChangeMailer.notify(@request.student,'Revisada').deliver_now
         format.html { redirect_to [:admin, @request], notice: 'Request was successfully updated.' }
         format.json { render :show, status: :ok, location: @request }
       else

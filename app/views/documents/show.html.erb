@@ -7,13 +7,9 @@
 
 <p>
   <strong>Route:</strong>
-  <%= @document.route %>
+  <%= image @document.route %>
 </p>
 
-<p>
-  <strong>Request:</strong>
-  <%= @document.request %>
-</p>
 
 <%= link_to 'Edit', edit_student_document_path(@document) %> |
 <%= link_to 'Back', student_requests_path %>

@@ -13,7 +13,7 @@
         when 1%>
           <%= form_for admin_request_path([:admin, @request]), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 2 %>
-            <%= submit_tag 'Revisar', class: 'btn revision', 'onclick' =>  NotifyStatusChangeMailer.notify(@request.student,'Revisada').deliver_now  %>
+            <%= submit_tag 'Revisar', class: 'btn revision'  %>
             
           <% end %>
         <%when 2 %>
