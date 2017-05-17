@@ -14,31 +14,40 @@
           <%= form_for admin_request_path([:admin, @request]), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 2 %>
             <%= submit_tag 'Revisar', class: 'btn revision'  %>
+            <% @flag=1 %>
             
           <% end %>
         <%when 2 %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 4 %>
             <%= submit_tag 'Aprobar', class: 'btn soportes' %>
+            <% @flag=2 %>
             
           <% end %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 3 %>
             <%= submit_tag 'Devolver', class: 'btn devuelto' %>
+            <% @flag=2 %>
             
           <% end %>
         <%when 3 %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 2 %>
             <%= submit_tag 'Revisar', class: 'btn revision'%>
+            <% @flag=3 %>
             
           <% end %>
         <%when 4 %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 5 %>
             <%= submit_tag 'Terminar', class: 'btn soportes'%>
+            <% @flag=4 %>
             
           <% end %>
+        <%when 5 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <% @flag=5 %>
+          <% end %>  
         <%end%>
       </div>
     </div>
@@ -46,17 +55,17 @@
       <div class="col-md-4">
         <p>
         <strong>Estado:</strong>
-          <% if @request.state == 1 %>
+          <% if @flag == 1 %>
               <span><strong>Pendiente</strong></span>
-            <% elsif @request.state == 2 %>
-              <span><strong>En revisión</strong></span>
-            <% elsif @request.state == 3 %>
-              <span><strong>Devuelto</strong></span>
-            <% elsif @request.state == 4 %>
-              <span><strong>En espera de soportes</strong></span>
-            <% elsif @request.state == 5 %>
-              <span><strong>Terminada</strong></span>
-            <% end %>
+          <% elsif @flag == 2 %>
+            <span><strong>En revisión</strong></span>
+          <% elsif @flag == 3 %>
+            <span><strong>Devuelto</strong></span>
+          <% elsif @flag == 4 %>
+            <span><strong>En espera de soportes</strong></span>
+          <% elsif @flag == 5 %>
+            <span><strong>Terminada</strong></span>
+          <% end %>
         </p>      
       </div>
       <div class="col-md-4">

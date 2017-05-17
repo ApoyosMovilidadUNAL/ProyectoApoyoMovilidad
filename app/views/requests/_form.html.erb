@@ -16,19 +16,24 @@
     <div class="col-md-1">
     </div>
     <div class="form-group col-md-4">
-      <font size="4"><%= f.label :Nombre, class:"text-muted" %></font>
+      <font size="4"><%= f.label :Nombres, class:"text-muted" %></font>
       <div class="col-lg-10">
-        <font size="4"><p class="form-control-static"><%= @student.name %></p></font>
+        <font size="4"><h3 class="form-control-static"><%= @student.name %></h3></font>
       </div>
     </div>
 
+    
+
     <div class="col-md-1">
     </div>
-
     <div class="form-group col-md-4">
-      <font size="4"><%= f.label :id_estudiante, class:"text-muted" %></font>
-      <%= f.text_field :student_id , class: "form-control"%>
+      <font size="4"><%= f.label :Apellidos, class:"text-muted" %></font>
+      <div class="col-lg-10">
+        <font size="4"><h3 class="form-control-static"><%= @student.lastname %></h3></font>
+      </div>
+      <%= f.hidden_field :student_id , value: @student.id%>
     </div>
+    
 
   </div>
   
