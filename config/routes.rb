@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     authenticated :user do
       root 'static_pages#home', as: :authenticated_root
+      get '/set-student-document', to: "static_pages#set_document", as: :set_document
       scope :admin, as: :admin do
         get '/requests-history', to: 'requests#history'
         get '/statistics', to: 'requests#statistics'
