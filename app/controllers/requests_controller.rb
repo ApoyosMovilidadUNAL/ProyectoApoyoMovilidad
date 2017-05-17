@@ -51,6 +51,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.save
+        NotifyStatusChangeMailer.notify(@request.student,'Creada').deliver_now
         format.html { redirect_to [:student, @request], notice: 'Request was successfully created.' }
         format.json { render :show, status: :created, location: @request }
       else
@@ -65,7 +66,19 @@ class RequestsController < ApplicationController
   def update
     respond_to do |format|
       if @request.update(request_params)
-        NotifyStatusChangeMailer.notify(@request.student,'Revisada').deliver_now
+        if @request.state==2
+          NotifyStatusChangeMailer.notify(@request.student,'Revisada').deliver_now
+        
+        elsif @request.state==3
+          NotifyStatusChangeMailer.notify(@request.student,'Devuelta').deliver_now
+        
+        elsif @request.state==4
+          NotifyStatusChangeMailer.notify(@request.student,'Aprobada').deliver_now
+        
+        elsif @request.state==5
+          NotifyStatusChangeMailer.notify(@request.student,'Terminada').deliver_now
+        end
+
         format.html { redirect_to [:admin, @request], notice: 'Request was successfully updated.' }
         format.json { render :show, status: :ok, location: @request }
       else

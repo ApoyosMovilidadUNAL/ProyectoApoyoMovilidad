@@ -19,24 +19,24 @@
         <%when 2 %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 4 %>
-            <%= submit_tag 'Aprobar', class: 'btn soportes', 'onclick' =>  NotifyStatusChangeMailer.notify(@request.student,'Aprobada').deliver_now %>
+            <%= submit_tag 'Aprobar', class: 'btn soportes' %>
             
           <% end %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 3 %>
-            <%= submit_tag 'Devolver', class: 'btn devuelto', 'onclick' =>  NotifyStatusChangeMailer.notify(@request.student,'Devuelta').deliver_now %>
+            <%= submit_tag 'Devolver', class: 'btn devuelto' %>
             
           <% end %>
         <%when 3 %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 2 %>
-            <%= submit_tag 'Revisar', class: 'btn revision', 'onclick' =>  NotifyStatusChangeMailer.notify(@request.student,'Revisada').deliver_now %>
+            <%= submit_tag 'Revisar', class: 'btn revision'%>
             
           <% end %>
         <%when 4 %>
           <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 5 %>
-            <%= submit_tag 'Terminar', class: 'btn soportes', 'onclick' =>  NotifyStatusChangeMailer.notify(@request.student,'Terminada').deliver_now %>
+            <%= submit_tag 'Terminar', class: 'btn soportes'%>
             
           <% end %>
         <%end%>
