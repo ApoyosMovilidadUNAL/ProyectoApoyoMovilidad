@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Docu name:</strong>
-  <%= @document.docu_name %>
+  <strong>Name:</strong>
+  <%= @document.name %>
 </p>
 
 <p>
-  <strong>Docu ruta:</strong>
-  <%= @document.docu_ruta %>
+  <strong>Route:</strong>
+  <%= image @document.route %>
 </p>
 
 
-
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
+<%= link_to 'Edit', edit_student_document_path(@document) %> |
+<%= link_to 'Back', student_requests_path %>

@@ -1,0 +1,73 @@
+
+<main class="detalle" >
+  <div class="breadcrumb-class">
+    Está en:<a href="#" target="_self" title="Inicio">Inicio</a>
+  </div>
+  <div class="container-fluid" style="padding: 2%" >
+    <div class="col-md-3" style="padding: 1%; background-color: #aaa">
+      <%= render 'static_pages/personal-info' %>
+    </div>
+    <div class="col-md-9">
+      <div class="container-fluid" style="padding: 2%; background-color: #eee">
+
+        <div class="row">
+              <div class="col-md-8">
+               <h1>Solicitudes</h1>
+              </div> 
+              <div class="col-md-4">
+                <% if @student.rol == 2 %>
+                  <%= button_to 'Nueva solicitud', new_student_request_path, method: :get, class: "btn btn-success"%>
+                <% end %>
+              </div>
+
+        </div>  
+        
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Estado</th>
+              <th>Estudiante</th>
+              <th>Profesor</th>
+              <th>Descripcion</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @requests.each do |request| %>
+              <tr class="<%= (request.state == 1) ? 'danger' : ((request.state == 2) ? 'info' : (  request.state == 3 ? 'warning' : 'success') ) %>" >
+                <td>
+                  <% if request.state == 1 %>
+                    <span><strong>Pendiente</strong></span>
+                  <% elsif request.state == 2 %>
+                    <span><strong>En revisión</strong></span>
+                  <% elsif request.state == 3 %>
+                    <span><strong>Devuelto</strong></span>
+                  <% elsif request.state == 4 %>
+                    <span><strong>En espera de soportes</strong></span>
+                  <% elsif request.state == 5 %>
+                    <span><strong>Terminada</strong></span>
+                  <% end %>
+                </td>
+                <td><%= request.student.name %></td>
+                <td><%= request.professor.name %></td>
+                <td><%= request.description %></td>
+                <%case @student.rol
+                  when 1%>
+                  <td><%= link_to 'Detalles', admin_request_path(request) %></td>
+                  <% when 2 %>
+                  <td><%= link_to 'Detalles', student_request_path(request) %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <% if @student.rol == 1 %>
+        <%= will_paginate @requests, renderer: BootstrapPagination::Rails %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+  

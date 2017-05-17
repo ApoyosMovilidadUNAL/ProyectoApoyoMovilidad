@@ -2,88 +2,104 @@
   <div class="breadcrumb-class">
       Está en:<a href="#" target="_self" title="Inicio"></a>
     </div>
-
-  <div class="container-fluid">
+  <% state_class = (@request.state == 1) ? 'pendiente' : ((@request.state == 2) ? 'revision' : (  @request.state == 3 ? 'devuelto' : 'soportes') ) %>
+  <div class="container-fluid ">
+    <div class="row <%= state_class %>" >
+      <div class="col-md-9 ">
+        
+      </div>
+      <div class="col-md-3" style="padding: 2px" >
+        <%case @request.state
+        when 1%>
+          <%= form_for admin_request_path([:admin, @request]), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 2 %>
+            <%= submit_tag 'Revisar', class: 'btn revision'  %>
+            <% @flag=1 %>
+            
+          <% end %>
+        <%when 2 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 4 %>
+            <%= submit_tag 'Aprobar', class: 'btn soportes' %>
+            <% @flag=2 %>
+            
+          <% end %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-inline'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 3 %>
+            <%= submit_tag 'Devolver', class: 'btn devuelto' %>
+            <% @flag=2 %>
+            
+          <% end %>
+        <%when 3 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 2 %>
+            <%= submit_tag 'Revisar', class: 'btn revision'%>
+            <% @flag=3 %>
+            
+          <% end %>
+        <%when 4 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <%= hidden_field_tag :state, @request.state = 5 %>
+            <%= submit_tag 'Terminar', class: 'btn soportes'%>
+            <% @flag=4 %>
+            
+          <% end %>
+        <%when 5 %>
+          <%= form_for admin_request_path([:admin, @request], class: 'form-horizontal'), method: :put do %>
+            <% @flag=5 %>
+          <% end %>  
+        <%end%>
+      </div>
+    </div>
     <div class="container-fluid">
       <div class="col-md-4">
         <p>
         <strong>Estado:</strong>
-          <% if @request.req_estado == 1 %>
+          <% if @flag == 1 %>
               <span><strong>Pendiente</strong></span>
-            <% elsif @request.req_estado == 2 %>
-              <span><strong>En revisión</strong></span>
-            <% elsif @request.req_estado == 3 %>
-              <span><strong>Devuelto</strong></span>
-            <% elsif @request.req_estado == 4 %>
-              <span><strong>En espera de soportes</strong></span>
-            <% elsif @request.req_estado == 5 %>
-              <span><strong>Terminada</strong></span>
-            <% end %>
+          <% elsif @flag == 2 %>
+            <span><strong>En revisión</strong></span>
+          <% elsif @flag == 3 %>
+            <span><strong>Devuelto</strong></span>
+          <% elsif @flag == 4 %>
+            <span><strong>En espera de soportes</strong></span>
+          <% elsif @flag == 5 %>
+            <span><strong>Terminada</strong></span>
+          <% end %>
         </p>      
       </div>
       <div class="col-md-4">
         <p>
           <strong>Profesor:</strong>
-          <%= @request.professor.pro_name %>
+          <%= @request.professor.name %> <%= @request.professor.lastname %>
         </p>    
       </div>
       <div class="col-md-4">  
         <p>
           <strong>Estudiante:</strong>
-          <%= @request.student.stu_name %>
+          <%= @request.student.name %> <%= @request.student.lastname %>
         </p>
       </div>
     </div>
     <div class="container-fluid">
       <div class="col-md-4">
        <p>
-          <strong>Req descripcion:</strong>
-          <%= @request.req_descripcion %>
+          <strong>Descripción:</strong>
+          <%= @request.description %>
         </p> 
       </div>
       <div class="col-md-8">
         <%= render 'documents/index', {locales: @student} %>
-        <% if @request.req_estado == 4 %>
-          <p>
-            <strong>Support:</strong>
-            <%= @request.support %>
-          </p>
-        <% end %>
+        <%case @request.state
+        when 4%>
+          <%= render 'supports/index', {locales: @student} %>
+        <% when 5%>
+          <%= render 'supports/index', {locales: @student} %>
+        <%end%>
+        
       </div>
     </div>
   </div>
 
   <br>
-
-  <% if @student.stu_rol == 1 %>
-
-    <% if @request.req_estado == 1 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 2 -%>
-        <%= submit_tag 'Revisar', class: 'btn btn-success' -%>
-      <%- end -%>
-
-    <% elsif @request.req_estado == 2 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 4 -%>
-        <%= submit_tag 'Aprobar', class: 'btn btn-success' -%>
-      <%- end -%>
-
-    <% elsif @request.req_estado == 3 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 4 -%>
-        <%= submit_tag 'Aprobar', class: 'btn btn-success' -%>
-      <%- end -%>
-
-    <% elsif @request.req_estado == 4 %>
-      <%= form_tag request_path(@request), method: :put do -%>
-        <%= hidden_field_tag :req_estado, @request.req_estado = 5 -%>
-        <%= submit_tag 'Terminar', class: 'btn btn-success' -%>
-      <%- end -%>
-    <% end %>
-
-  <% end %>
-  <!--
-  <%= link_to 'Edit', edit_request_path(@request) %>
-  -->
 </main>

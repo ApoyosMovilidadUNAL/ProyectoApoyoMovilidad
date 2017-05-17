@@ -1,4 +1,5 @@
-<%= form_for(request) do |f| %>
+<div class="panel-body">
+<%= form_for([:student, @request], :html => {:class => "form-horizontal"}) do |f| %>
   <% if request.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
@@ -11,24 +12,82 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.hidden_field :req_estado, value: 1 %>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Nombres, class:"text-muted" %></font>
+      <div class="col-lg-10">
+        <font size="4"><h3 class="form-control-static"><%= @student.name %></h3></font>
+      </div>
+    </div>
+
+    
+
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Apellidos, class:"text-muted" %></font>
+      <div class="col-lg-10">
+        <font size="4"><h3 class="form-control-static"><%= @student.lastname %></h3></font>
+      </div>
+      <%= f.hidden_field :student_id , value: @student.id%>
+    </div>
+    
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Valor_solicitado, class:"text-muted" %></font>
+      <%= f.number_field :amount, class: "form-control" %>
+    </div>
+   
+    <div class="col-md-1">
+    </div>
+
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Lugar_al_que_viaja, class:"text-muted" %></font>
+      <%= f.text_field :place, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :req_descripcion %>
-    <%= f.text_area :req_descripcion %>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :Tipo_de_solicitud, class:"text-muted" %></font>
+      <%= f.select :type_req, ['Solicitud 1','Solicitud 2','Solicitud 3'], {}, {:class => 'form-control'} %>
+    </div>
+
+    <div class="col-md-1">
+    </div>
+
+    <div class="form-group col-md-4">
+      <font size="4"><%= f.label :id_profesor , class:"text-muted"%></font>
+      <%= f.text_field :professor_id, class: "form-control"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.hidden_field :student_id, value: @student.id %>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="form-group col-md-9">
+      <font size="4"><%= f.label :Descripcion, class:"text-muted" %></font>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.hidden_field :professor_id, value: 1 %>
+  <div class="form-group">
+    <%= f.hidden_field :state, value: 1 %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
+ <div class="row">
+    <div class="col-md-8"></div>
+    <div class="form-group col-md-4">
+      <%= f.submit "Crear Solicitud", class: "btn btn-success"%>
+    </div>
   </div>
 <% end %>
+</div>

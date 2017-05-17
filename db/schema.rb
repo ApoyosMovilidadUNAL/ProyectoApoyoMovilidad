@@ -10,14 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407093130) do
+ActiveRecord::Schema.define(version: 20170512023322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+  end
+
   create_table "documents", force: :cascade do |t|
-    t.string   "docu_name",  null: false
-    t.string   "docu_ruta",  null: false
+    t.string   "name"
+    t.string   "route"
     t.integer  "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,38 +40,42 @@ ActiveRecord::Schema.define(version: 20170407093130) do
   end
 
   create_table "professors", force: :cascade do |t|
-    t.string   "pro_name",   null: false
-    t.string   "pro_email",  null: false
-    t.integer  "pro_rol",    null: false
+    t.string   "name",       null: false
+    t.string   "lastname",   null: false
+    t.string   "email",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer  "req_estado",      null: false
-    t.text     "req_descripcion", null: false
+    t.integer  "state",        null: false
+    t.text     "description"
+    t.integer  "amount",       null: false
+    t.string   "place",        null: false
+    t.integer  "type_req"
     t.integer  "student_id"
     t.integer  "professor_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["professor_id"], name: "index_requests_on_professor_id", using: :btree
     t.index ["student_id"], name: "index_requests_on_student_id", using: :btree
   end
 
   create_table "students", force: :cascade do |t|
-    t.string   "stu_name",           null: false
-    t.string   "stu_email",          null: false
-    t.integer  "stu_rol",            null: false
-    t.integer  "stu_identification", null: false
-    t.string   "stu_facultad",       null: false
-    t.string   "stu_carrera",        null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "name",           null: false
+    t.string   "lastname",       null: false
+    t.string   "email",          null: false
+    t.integer  "rol",            null: false
+    t.integer  "identification", null: false
+    t.string   "faculty",        null: false
+    t.string   "career",         null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "supports", force: :cascade do |t|
-    t.string   "sup_name",   null: false
-    t.string   "sup_ruta",   null: false
+    t.string   "name"
+    t.string   "route"
     t.integer  "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,7 +84,9 @@ ActiveRecord::Schema.define(version: 20170407093130) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "username",               default: "", null: false
+    t.string   "name",                   default: "", null: false
+    t.string   "lastname",               default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

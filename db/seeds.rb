@@ -3,72 +3,56 @@
 #
 # Examples:
 #
-# movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-# Character.create(name: 'Luke', movie: movies.first)
-
-=begin PROFESORES
-=end
-
-for x in(1..110)
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+=begin
+for x in(1..5)
   Professor.create!(
-  pro_name:"profesor#{x}",
-  pro_email:"profe#{x}@unal.edu.co",
-  pro_rol:1)
+  name:"name_pro#{x}",
+  lastname:"lastname_pro#{x}",
+  email:"profe#{x}@unal.edu.co")
 end
 
 
-=begin ESTUDIANTES
-=end
-Student.create!(
-  stu_name:"estudiante1",
-  stu_email:"estudiante1@unal.edu.co",
-  stu_rol:1,
-  stu_identification: 1,
-  stu_facultad: 'ingenieria',
-  stu_carrera:'ingenieria de sistemas')
-
-for x in(2..110)
+for x in(2..5)
   Student.create!(
-  stu_name:"estudiante#{x}",
-  stu_email:"estudiante#{x}@unal.edu.co",
-  stu_rol:2,
-  stu_identification: x,
-  stu_facultad: 'ingenieria',
-  stu_carrera:'ingenieria de sistemas')
+  name:"estudiante#{x}",
+  lastname:"lastname#{x}",
+  email:"estudiante#{x}@unal.edu.co",
+  rol:2,
+  identification: x,
+  faculty: "ingenieria",
+  career:"ingenieria de sistemas")
 end
 
-=begin SOLICITUDES
-=end
-for x in(1..110)
+for x in(1..5)
   Request.create(
-  req_estado:1,
-  req_descripcion:x,
+  state:1,
+  description:x,
+  amount: x,
+  place: x,
+  type_req: x,
   student_id:x,
   professor_id:x
-  #document_id:x,
-  #support_id:x
   )
 end
 
-=begin SOPORTES
-=end
-for x in(1..110)
+for x in(1..5)
   Support.create!(
-  sup_name:'name_s#{x}',
-  sup_ruta:'ruta_s#{x}',
+  name:"name_s#{x}",
+  route:"ruta_s#{x}",
   request_id:x
   )
 end
 
-=begin DOCUMENTOS
+for x in(1..5)
+  Document.create(
+  name:"nombre_d#{x}",
+  route:"ruta_d#{x}",
+  request_id:x
+  )
+end
 =end
 
-for x in(1..110)
-  Document.create(
-  docu_name:"nombre_d#{x}",
-  docu_ruta:"ruta_d#{x}",
-  request_id:x
-  )
-end
 
 

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  pro_name: MyString
-  pro_email: MyString
-  pro_rol: 1
+  name: MyStringa
+  lastname: MyString
+  email: MyString@unal.edu.co
 
 two:
-  pro_name: MyString
-  pro_email: MyString
-  pro_rol: 1
+  name: MyString2
+  lastname: MyString2
+  email: MyString2@unal.edu.co

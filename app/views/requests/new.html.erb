@@ -1,10 +1,11 @@
 <main class="detalle" >
 	<div class="breadcrumb-class">
-   	Está en:<a href="#" target="_self" title="Inicio">Nueva solicitud</a>
+    Está en:<a href="#" target="_self" title=""></a>
   </div>
-	<h1>Nueva solicitud</h1>
-
-	<%= render 'form', request: @request %>
-
-	<%= link_to 'Back', "/" %>	
+	<div class="panel panel-success">
+	<div class="panel-heading">
+    <h3 class="panel-title">Nueva Solicitud</h3>
+  </div>
+		<%= render 'form', request: @request %>
+	</div>
 </main>
