@@ -13,11 +13,11 @@
 
         <% if @student.rol == 2 %>
         <div class="row">
-              <div class="col-md-8">
+              <div class="col-md-9">
                <h1>Solicitudes</h1>
               </div> 
-              <div class="col-md-4">
-                  <%= button_to 'Nueva solicitud', new_student_request_path, method: :get, class: "btn btn-success"%>
+              <div class="col-md-2">
+                  <%= button_to 'Nueva solicitud', new_student_request_path, method: :get, class: "btn btn-primary"%>
               </div>
         </div>  
 
