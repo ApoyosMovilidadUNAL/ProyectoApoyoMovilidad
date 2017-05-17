@@ -24,14 +24,14 @@ class StaticPagesController < ApplicationController
 
   def set_document
     @student = Student.new(
-        :name => current_user.name,
-        :lastname => current_user.lastname,
-        :email => current_user.username + "@unal.edu.co",
-        :rol => 2,
-        :identification => Student.all.count + 1,
-        :faculty => 'Ingenieria',
-        :career => 'Ingeniera'
-      )
+          :name => current_user.name,
+          :lastname => current_user.lastname,
+          :email => current_user.username + "@unal.edu.co",
+          :rol => 2,
+          :identification => Student.all.count + 1,
+          :faculty => 'Ingenieria',
+          :career => 'Ingeniera'
+        )
   end
 
   private

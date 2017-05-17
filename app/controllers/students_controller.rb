@@ -39,6 +39,16 @@ class StudentsController < ApplicationController
     end
   end
 
+  def create_student
+    @student = Student.new(student_params)
+    if @student.save
+      redirect_to authenticated_root_path
+    else
+      redirect_to new_user_session_path
+    end
+
+  end
+
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
@@ -71,6 +81,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :email, :rol, :identification, :faculty, :carreer)
+      params.require(:student).permit(:name, :lastname, :email, :rol, :identification, :faculty, :career)
     end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     authenticated :user do
       root 'static_pages#home', as: :authenticated_root
       get '/set-student-document', to: "static_pages#set_document", as: :set_document
+      post '/create-student', to: "students#create_student"
       scope :admin, as: :admin do
         get '/requests-history', to: 'requests#history'
         get '/statistics', to: 'requests#statistics'

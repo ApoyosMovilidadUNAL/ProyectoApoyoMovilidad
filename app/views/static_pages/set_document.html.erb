@@ -1,8 +1,23 @@
+<% console 	 %>
 <main class="detalle" >
 	<div class="breadcrumb-class">
     	Está en:<a href="#" target="_self" title="Insertar numero de documento">Insertar numero de documento</a>
     </div>
 	<div class="container-fluid" >
-		<%%>
+		<%=	 form_for @student, url: create_student_url do |f| %>
+
+		  <%= f.hidden_field :name, value: @student.name %>
+		  <%= f.hidden_field :lastname, value: @student.lastname %>
+		  <%= f.hidden_field :email, value: @student.email %>
+		  <%= f.hidden_field :rol, value: @student.rol %>
+		  <%= f.hidden_field :name, value: @student.name %>
+			<div class="field">
+		    <%= f.label :identification %>
+		    <%= f.number_field :identification %>
+		  </div>
+		  <%= f.hidden_field :faculty, value: @student.faculty %>
+		  <%= f.hidden_field :career, value: @student.career %>
+		  <%= f.submit "Guardar", class: "btn btn-success"%>
+		<% end %>
 	</div>
 </main>
