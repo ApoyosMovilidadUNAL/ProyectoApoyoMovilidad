@@ -18,7 +18,8 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    @document = Document.new
+    @document = Document.new    
+    @request = Request.find(params[:request])
   end
 
   # GET /documents/1/edit
@@ -29,10 +30,11 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = Document.new(document_params)
+    @request = @document.request
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to [:student, @document], notice: 'Document was successfully created.' }
+        format.html { redirect_to student_request_path(@request), notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
         format.html { render :new }
@@ -58,9 +60,10 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
+    @request = @document.request
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
+      format.html { redirect_to student_request_path(@request), notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

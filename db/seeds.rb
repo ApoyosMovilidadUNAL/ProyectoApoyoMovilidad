@@ -5,6 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Professor.create(
+  name:"profesor",
+  lastname:"profesor",
+email:"profe@unal.edu.co")
 =begin
 for x in(1..5)
   Professor.create!(
@@ -12,6 +17,7 @@ for x in(1..5)
   lastname:"lastname_pro#{x}",
   email:"profe#{x}@unal.edu.co")
 end
+
 
 
 for x in(2..5)

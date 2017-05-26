@@ -19,6 +19,7 @@ class SupportsController < ApplicationController
   # GET /supports/new
   def new
     @support = Support.new
+    @request = Request.find(params[:request])
   end
 
   # GET /supports/1/edit
@@ -29,10 +30,10 @@ class SupportsController < ApplicationController
   # POST /supports.json
   def create
     @support = Support.new(support_params)
-
+    @request = @support.request
     respond_to do |format|
       if @support.save
-        format.html { redirect_to [:student, @support], notice: 'Support was successfully created.' }
+        format.html { redirect_to student_request_path(@request), notice: 'Support was successfully created.' }
         format.json { render :show, status: :created, location: @support }
       else
         format.html { render :new }
@@ -58,9 +59,10 @@ class SupportsController < ApplicationController
   # DELETE /supports/1
   # DELETE /supports/1.json
   def destroy
+    @request = @support.request
     @support.destroy
     respond_to do |format|
-      format.html { redirect_to supports_url, notice: 'Support was successfully destroyed.' }
+      format.html { redirect_to student_request_path(@request), notice: 'Support was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
