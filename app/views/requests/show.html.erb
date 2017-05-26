@@ -3,6 +3,10 @@
       Está en:<a href="#" target="_self" title="Inicio"></a>
     </div>
   <% state_class = (@request.state == 1) ? 'pendiente' : ((@request.state == 2) ? 'revision' : (  @request.state == 3 ? 'devuelto' : 'soportes') ) %>
+  
+
+<div class="panel panel-info">
+  <div class="panel-body">
   <div class="container-fluid ">
     <div class="row <%= state_class %>" >
       <div class="col-md-9 ">
@@ -117,6 +121,7 @@
       </div>
     </div>
   </div>
-
+</div>
+</div>
   <br>
 </main>
