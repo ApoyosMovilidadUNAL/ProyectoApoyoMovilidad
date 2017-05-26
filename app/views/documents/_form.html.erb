@@ -11,21 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
+<div class="row">
+
+  <div class="col-md-12">
+    <font size="4"><%= f.label :Nombre, class:"text-muted" %></font>
     <%= f.text_field :name , class: "form-control"%>
   </div>
 
-  <div class="field">
-    <%= f.label :route %>
+  <div class="col-md-12">
+    <font size="4"><%= f.label :Ruta_Archivo, class:"text-muted" %></font>
     <%= f.file_field :route %> 
   </div>
 
-  <div class="field">
-    <%= f.hidden_field :request_id, class: "form-control" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.hidden_field :request_id, class: "form-control" %>
+
+
+  <div class="col-md-12">
+    <%= f.submit "Guardar", class: "btn btn-success" %>
   </div>
+</div>
 <% end %>
