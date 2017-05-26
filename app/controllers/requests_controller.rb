@@ -19,7 +19,7 @@ class RequestsController < ApplicationController
         @requests = Request.request_by_estado(Integer(params[:search3]))
         .paginate(:page => params[:page], :per_page => 15)
       else
-        @requests = Request.all
+        @requests = Request.all.where.not(state: 5)
         .paginate(:page => params[:page], :per_page => 15)
       end
     end
@@ -116,9 +116,11 @@ class RequestsController < ApplicationController
     def set_user_info
       @student = Student.find_by(email: current_user.email)
       if @student.rol == 1
-        @requests = Request.all.paginate(:page => params[:page], :per_page => 20)  
+        @requests = Request.all.where.not(state: 5)
+          .paginate(:page => params[:page], :per_page => 20)  
       else
-        @requests = Request.all.where(student_id: @student.id).paginate(:page => params[:page], :per_page => 20)
+        @requests = Request.all.where(student_id: @student.id)
+          .paginate(:page => params[:page], :per_page => 20)
       end
       
     end

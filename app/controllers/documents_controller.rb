@@ -30,10 +30,11 @@ class DocumentsController < ApplicationController
   # POST /documents.json
   def create
     @document = Document.new(document_params)
+    @request = @document.request
 
     respond_to do |format|
       if @document.save
-        format.html { redirect_to [:student, @document], notice: 'Document was successfully created.' }
+        format.html { redirect_to student_request_path(@request), notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
         format.html { render :new }

@@ -30,10 +30,10 @@ class SupportsController < ApplicationController
   # POST /supports.json
   def create
     @support = Support.new(support_params)
-
+    @request = @support.request
     respond_to do |format|
       if @support.save
-        format.html { redirect_to [:student, @support], notice: 'Support was successfully created.' }
+        format.html { redirect_to student_request_path(@request), notice: 'Support was successfully created.' }
         format.json { render :show, status: :created, location: @support }
       else
         format.html { render :new }
