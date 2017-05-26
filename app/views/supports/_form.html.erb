@@ -1,4 +1,4 @@
-<%= form_for([:student, @support]) do |f| %>
+<%= form_for([:student, @support], :html => {:class => "form-horizontal"}) do |f| %>
   <% if support.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(support.errors.count, "error") %> prohibited this support from being saved:</h2>
@@ -10,22 +10,25 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <div class="col-md-12">
+      <font size="4"><%= f.label :Nombre, class:"text-muted" %></font>
+      <%= f.text_field :name , class: "form-control"%>
+    </div>
+
+    <div class="col-md-12">
+      <font size="4"><%= f.label :Ruta_Archivo, class:"text-muted" %></font>
+      <%= f.file_field :route %> 
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :request_id, value: @request.id %>
+    </div>
+
+    <div class="col-md-12">
+      <%= f.submit "Guardar", class: "btn btn-success" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :route %>
-    <%= f.file_field :route %> 
-  </div>
-
-  <div class="field">
-    <%= f.hidden_field :request_id, value: @request.id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
