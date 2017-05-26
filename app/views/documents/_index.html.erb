@@ -16,8 +16,8 @@
       <tr>
         <td><%= document.name %></td>
         <td><%= document.route %></td>
-        <td><%= link_to 'Show', student_document_path(document.id) %></td>
-        <td><%= link_to 'Destroy', student_document_path(:id => document.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', student_document_path(document.id) %></td>
+        <td><%= link_to 'Eliminar', student_document_path(:id => document.id), method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>

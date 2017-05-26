@@ -16,8 +16,8 @@
       <tr>
         <td><%= support.name %></td>
         <td><%= support.route %></td>
-        <td><%= link_to 'Show', student_support_path(support.id) %></td>
-        <td><%= link_to 'Destroy', student_support_path(:id => support.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', student_support_path(support.id) %></td>
+        <td><%= link_to 'Eliminar', student_support_path(:id => support.id), method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       </tr>
     <% end %>
   </tbody>
