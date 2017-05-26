@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @support.name %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @support.route %>
+</p>
+
+<p>
+  <strong>Request:</strong>
+  <%= @support.request %>
+</p>
+
+<%= link_to 'Edit', edit_student_support_path(@support) %> |
+<%= link_to 'Back', student_requests_path %>

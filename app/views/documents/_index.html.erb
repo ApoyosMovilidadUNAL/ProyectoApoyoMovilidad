@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Documentos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Ruta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @request.document.each do |document| %>
+      <tr>
+        <td><a href="<%= document.route %>" target="_blank" ><%= document.name %><a></td>
+        <%if @student.rol==2%>
+        <td><%= link_to 'Eliminar', student_document_path(:id => document.id), method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%if @student.rol==2%>
+  <%= link_to 'Cargar Documento', new_student_document_path(:request => @request.id) %>
+<%end%>

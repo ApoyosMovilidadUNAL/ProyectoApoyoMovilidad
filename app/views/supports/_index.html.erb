@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Soportes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Ruta</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @request.support.each do |support| %>
+      <tr>
+        <td><a href="<%= support.route %>" target="_blank" ><%= support.name %><a></td>
+        <%if @student.rol==2%>
+        <td><%= link_to 'Eliminar', student_support_path(:id => support.id), method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%if @student.rol==2%>
+  <%= link_to 'Cargar suporte', new_student_support_path(:request => @request.id) %>
+<%end%>  

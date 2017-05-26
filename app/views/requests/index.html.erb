@@ -1,0 +1,148 @@
+
+<main class="detalle" >
+  
+  <div class="breadcrumb-class">
+    Está en:<a href="#" target="_self" title="Inicio">Inicio</a>
+  </div>
+  <div class="container-fluid" style="padding: 2%" >
+    <div class="col-md-3" style="padding: 1%; background-color: #aaa">
+      <%= render 'static_pages/personal-info' %>
+    </div>
+    <div class="col-md-9" style="padding-top: 0">
+      <div class="container-fluid" style="padding-top: 2%; padding-bottom: 15px; background-color: #eee">
+
+        <% if @student.rol == 2 %>
+        <div class="row">
+              <div class="col-md-9">
+               <h1>Solicitudes</h1>
+              </div> 
+              <div class="col-md-2">
+                  <%= button_to 'Nueva solicitud', new_student_request_path, method: :get, class: "btn btn-primary"%>
+              </div>
+        </div>  
+
+        <% elsif @student.rol == 1 %>
+
+        <div class="container-fluid">
+          <div class="row">
+           <h1>Solicitudes</h1>
+          </div> 
+          <div class="row" style="padding-bottom: 15px">
+            <%= form_tag admin_requests_path, :method => 'get', class: "form-inline" do%>
+              <div class="form-group " >  
+                <label class="sr-only">Profesor</label>
+                <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Nombre profesor" %>
+              </div>
+              <div class="form-group " >
+                <label class="sr-only">Estudiante</label>
+                <%= text_field_tag :search2, params[:search2], class: "form-control", placeholder: "Nombre estudiante"%>
+              </div>
+              <div class="form-group ">
+                <label class="sr-only">Estado</label>
+                <%= select_tag :search3,options_for_select([["",nil],["Pendiente",1],["En revisión",2],["Devuelto",3],["En espera de soportes",4],["Terminada",5]]), class: "form-control", placeholder: "Estado"%>  
+              </div>
+              <!--<p>Estado</p><%= number_field_tag :search3, params[:search3] %>-->
+              
+              <div class="form-group">
+                <%= submit_tag "Filtrar", class: "btn btn-default"%>
+              </div>
+            <% end %>
+          </div>
+        </div>  
+        <% end %>
+
+        <div style="text-align: center;">
+          
+          <div class="col-xs-12 table-head">
+            <div style="width: 100%">
+              <div class="col-md-3 col-xs-3">Estado</div>
+              <div class="col-md-3 col-xs-3">Estudiante</div>
+              <div class="col-md-3 col-xs-3">Profesor</div>
+              <div class="col-md-3 col-xs-3">Descripcion</div>
+            </div>
+          </div class="row">
+
+            <% @requests.each do |request| %>
+              <div>
+
+              <%case @student.rol
+                  when 1%>
+                  <div class=" col-xs-12 ", style= "padding: 1px;" >
+                  <% state_class = (request.state == 1) ? 'pendiente' : ((request.state == 2) ? 'revision' : (  request.state == 3 ? 'devuelto' : 'soportes') ) %>
+                  <%= link_to admin_request_path(request), class: "#{state_class} col-xs-12 no-decoration  ", style: "padding: 0" do%>
+                    <div>
+                        
+                      <div class="col-md-3 col-xs-3">
+                        <% if request.state == 1 %>
+                          <span><strong>Pendiente</strong></span>
+                        <% elsif request.state == 2 %>
+                          <span><strong>En revisión</strong></span>
+                        <% elsif request.state == 3 %>
+                          <span><strong>Devuelto</strong></span>
+                        <% elsif request.state == 4 %>
+                          <span><strong>En espera de soportes</strong></span>
+                        <% elsif request.state == 5 %>
+                          <span><strong>Terminada</strong></span>
+                        <% end %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.student.name %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.professor.name %>  
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.description %>
+                      </div>
+                    </div>
+                      
+                    
+                  <% end%>
+                <% when 2 %>
+                  <div class=" col-xs-12 ", style= "padding: 1px;" >
+                  <% state_class = (request.state == 1) ? 'pendiente' : ((request.state == 2) ? 'revision' : (  request.state == 3 ? 'devuelto' : 'soportes') ) %>
+                  <%= link_to student_request_path(request), class: "#{state_class} col-xs-12 no-decoration  ", style: "padding: 0" do%>
+                    <div>
+                        
+                      <div class="col-md-3 col-xs-3">
+                        <% if request.state == 1 %>
+                          <span><strong>Pendiente</strong></span>
+                        <% elsif request.state == 2 %>
+                          <span><strong>En revisión</strong></span>
+                        <% elsif request.state == 3 %>
+                          <span><strong>Devuelto</strong></span>
+                        <% elsif request.state == 4 %>
+                          <span><strong>En espera de soportes</strong></span>
+                        <% elsif request.state == 5 %>
+                          <span><strong>Terminada</strong></span>
+                        <% end %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.student.name %>
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.professor.name %>  
+                      </div>
+                      <div class="col-md-3 col-xs-3">
+                        <%= request.description %>
+                      </div>
+                    </div>
+                      
+                    
+                  <% end%>
+                  </div>
+                <% end %>
+              
+                
+              </div>
+            <% end %>
+        </div>
+
+        <% if @student.rol == 1 %>
+        <%= will_paginate @requests, renderer: BootstrapPagination::Rails %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+  

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Req estado:</strong>
+  <%= @request.req_estado %>
+</p>
+
+<p>
+  <strong>Req descripcion:</strong>
+  <%= @request.req_descripcion %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @request.student %>
+</p>
+
+<p>
+  <strong>Professor:</strong>
+  <%= @request.professor %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @request.document %>
+</p>
+
+<p>
+  <strong>Support:</strong>
+  <%= @request.support %>
+</p>
+
+<%= link_to 'Edit', edit_request_path(@request) %> |
+<%= link_to 'Back', requests_path %>

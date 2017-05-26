@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @document.name %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @document.route %>
+</p>
+
+
+<%= link_to 'Edit', edit_student_document_path(@document) %> |
+<%= link_to 'Back', student_requests_path %>

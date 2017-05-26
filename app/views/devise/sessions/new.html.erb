@@ -1,0 +1,20 @@
+<main class="detalle">
+    <div class="breadcrumb-class">
+      Está en:<a href="#" target="_self" title="Inicio">Inicio</a>
+    </div>
+    <div class="container-fluid" style="padding: 2%">
+      <div class="row">
+        <div class="col-md-3" style="padding: 0; background-color: #aaa">
+          <%= render 'devise/sessions/new'%>
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+        <%= render 'layouts/gallery' %>
+      </div>
+    </div>
+
+</main>

@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+.row [class*="col-"]{
+	padding: 15px
+}
+
+.table-head{
+	padding: 0;
+	background-color: #293d3d;
+	color: #fff;
+	font-size: 1.5em;
+	letter-spacing: .15em;
+	width: 100%
+}
+
+.no-decoration {
+	padding: 0;
+	color: #000;
+	text-decoration: none !important
+}
+.pendiente{
+	font-size: 1.3em;
+	background-color: #FFD1C7
+}
+.revision{
+	font-size: 1.3em;
+	background-color: #A3C2CF
+}
+
+.devuelto{
+	font-size: 1.3em;
+	background-color: #FFE4C7
+}
+.soportes{
+	font-size: 1.3em;
+	background-color: #AADBBE
+}
