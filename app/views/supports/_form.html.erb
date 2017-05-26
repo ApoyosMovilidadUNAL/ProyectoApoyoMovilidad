@@ -22,8 +22,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :request_id %>
-    <%= f.text_field :request_id %>
+    <%= f.hidden_field :request_id, value: @request.id %>
   </div>
 
   <div class="actions">

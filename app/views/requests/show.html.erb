@@ -9,7 +9,8 @@
         
       </div>
       <div class="col-md-3" style="padding: 2px" >
-        <%case @request.state
+      <% if @student.rol== 1 %>
+            <%case @request.state
         when 1%>
           <%= form_for admin_request_path([:admin, @request]), method: :put do %>
             <%= hidden_field_tag :state, @request.state = 2 %>
@@ -49,6 +50,7 @@
             <% @flag=5 %>
           <% end %>  
         <%end%>
+      <% end %>  
       </div>
     </div>
     <div class="container-fluid">

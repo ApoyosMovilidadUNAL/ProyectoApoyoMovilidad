@@ -18,7 +18,8 @@ class DocumentsController < ApplicationController
 
   # GET /documents/new
   def new
-    @document = Document.new
+    @document = Document.new    
+    @request = Request.find(params[:request])
   end
 
   # GET /documents/1/edit
@@ -58,9 +59,10 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
+    @request = @document.request
     @document.destroy
     respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
+      format.html { redirect_to student_request_path(@request), notice: 'Document was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
